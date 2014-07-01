@@ -58,7 +58,7 @@ source $ZSH/oh-my-zsh.sh
 # User configuration
 
 # autoload bashcompinit
-export PATH="/Applications/google-cloud-sdk/bin:/Users/moonshadow/.nvm/v0.10.28/bin:/usr/local/bin:/usr/bin:/bin:/Users/moonshadow/go/bin"
+# export PATH="/Applications/google-cloud-sdk/bin:/Users/moonshadow/.nvm/v0.10.28/bin:/usr/local/bin:/usr/bin:/bin:/Users/moonshadow/go/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
@@ -79,3 +79,8 @@ export PATH="/Applications/google-cloud-sdk/bin:/Users/moonshadow/.nvm/v0.10.28/
 #
 #
 source ~/.bash_profile
+
+# export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+
+#THIS MUST BE AT THE END OF THE FILE FOR GVM TO WORK!!!
+# [[ -s "/Users/vita/.gvm/bin/gvm-init.sh" ]] && source "/Users/vita/.gvm/bin/gvm-init.sh"
