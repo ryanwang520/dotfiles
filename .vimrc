@@ -12,6 +12,7 @@ colorscheme solarized
 set number
 set autoindent
 set nocompatible
+set incsearch
 
 
 runtime macros/matchit.vim
@@ -30,11 +31,37 @@ autocmd FileType python setlocal completeopt-=preview
 
 let g:NERDTreeShowHidden=1
 
-setlocal tabstop=4
-setlocal softtabstop=4
-setlocal shiftwidth=4
-setlocal textwidth=80
-setlocal smarttab
-setlocal expandtab
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set textwidth=80
+set smarttab
+set expandtab
 
 :set noswapfile
+
+set guifont=Monaco:h16
+" set guifont=Monospace:20
+"
+nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
+set hlsearch
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+let NERDTreeIgnore = ['\.pyc$']
+:let mapleader = "-"
+:let maplocalleader = "\\"
+:noremap <leader>- dd p
+:noremap <leader>_ ddkP
+:inoremap <leader><c-d> <esc>ddi
+:inoremap <leader><c-u> <esc>viwU  
+:nnoremap <leader><c-u> viwUo
+:nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+"重载.vimrc文件
+:nnoremap <leader>sv :source $MYVIMRC<cr>
+:iabbrev @@    hwwangwang@gmail.com
+:iabbrev ccopy Copyright 2014 Vita John, all rights reserved.
+:iabbrev ssig -- <cr>Vita John<cr>hwwangwang@gmail.com
+:nnoremap <leader>" viw<esc>a"<esc>hbi"<esc>lel
+:nnoremap <leader>' viw<esc>a'<esc>hbi'<esc>lel
+"在选中区域两边添加"
+:vnoremap <leader>"" <esc>`>a"<esc>`<i"<esc>
+:inoremap jk <esc>
