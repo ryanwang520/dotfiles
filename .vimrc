@@ -3,12 +3,13 @@ filetype off
 execute pathogen#infect()
 call pathogen#helptags()
 
-
+set t_Co=256
+colorscheme badwolf
 :syntax on
 filetype plugin indent on
 syntax enable
 set background=dark
-colorscheme solarized
+" colorscheme solarized
 set number
 set autoindent
 set nocompatible
@@ -48,7 +49,7 @@ set hlsearch
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 let NERDTreeIgnore = ['\.pyc$']
 :let mapleader = "-"
-:let maplocalleader = "\\"
+:let maplocalleader = "\="
 :noremap <leader>- dd p
 :noremap <leader>_ ddkP
 :inoremap <leader><c-d> <esc>ddi
@@ -65,3 +66,49 @@ let NERDTreeIgnore = ['\.pyc$']
 "在选中区域两边添加"
 :vnoremap <leader>"" <esc>`>a"<esc>`<i"<esc>
 :inoremap jk <esc>
+
+noremap   <Up>     <NOP>
+noremap   <Down>   <NOP>
+noremap   <Left>   <NOP>
+noremap   <Right>  <NOP>
+inoremap  <Up>     <NOP>
+inoremap  <Down>   <NOP>
+inoremap  <Left>   <NOP>
+inoremap  <Right>  <NOP>
+
+nnoremap <leader>pr :execute "rightbelow vsplit " . bufname("#")<cr>
+nnoremap <leader>pl :execute "leftabove vsplit " . bufname("#")<cr>
+
+
+inoremap <esc> <nop>
+augroup filetype_html
+    autocmd!
+    autocmd FileType html nnoremap <buffer> <localleader>f Vatzf
+augroup END
+
+augroup filetype_python
+    autocmd!
+    autocmd FileType python     :iabbrev <buffer> re  return<left>
+augroup END
+
+augroup filetype_markdown
+    autocmd!
+    autocmd FileType markdown :onoremap ih :<c-u>execute "normal! ?^\\(==\\\\|--\\)\\+\r:nohlsearch\rkvg_"<cr>
+:onoremap ah :<c-u>execute "normal! ?^==\\+$\r:nohlsearch\rg_vk0"<cr>
+augroup END
+" Vimscript file settings ---------------------- {{{
+augroup filetype_vim
+    autocmd!
+    autocmd FileType vim setlocal foldmethod=marker
+augroup END
+" }}}
+
+
+:set statusline=%.30F         " Path to the file
+:set statusline+=%=        " Switch to the right side
+:set statusline+=%l        " Current line
+:set statusline+=/         " Separator
+:set statusline+=%L        " Total lines
+:nnoremap <leader>grep :silent execute "grep! -R " . shellescape(expand("<cWORD>")) . " ."<cr>:copen<cr>
+
+:nnoremap <leader>N :setlocal number!<cr>
