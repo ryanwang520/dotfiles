@@ -7,7 +7,9 @@ export PATH="$PATH:$HOME/Library/Haskell/bin"
 export PATH="$PATH:/usr/sbin"
 export PATH=$PATH:$GO_HOME/bin
 export JAVA_HOME=`/usr/libexec/java_home -v 1.7`
-export DOCKER_HOST=tcp://192.168.59.103:2375
+export DOCKER_HOST=tcp://192.168.59.103:2376
+export DOCKER_CERT_PATH=~/.boot2docker/certs/boot2docker-vm
+export DOCKER_TLS_VERIFY=1
 
 alias vi="mvim"
 alias p="cd ~/projects"
