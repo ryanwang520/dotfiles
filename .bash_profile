@@ -10,8 +10,12 @@ export JAVA_HOME=`/usr/libexec/java_home -v 1.7`
 export DOCKER_HOST=tcp://192.168.59.103:2376
 export DOCKER_CERT_PATH=~/.boot2docker/certs/boot2docker-vm
 export DOCKER_TLS_VERIFY=1
+#ri format
+export RI="--format ansi --width 70"
+export PGDATA=/usr/local/var/postgres
 
 alias vi="mvim"
+alias irb="irb --simple-prompt" 
 alias p="cd ~/projects"
 alias test="./manage.py test"
 alias runserver="./manage.py runserver"

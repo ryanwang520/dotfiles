@@ -4,12 +4,14 @@ execute pathogen#infect()
 call pathogen#helptags()
 
 set t_Co=256
-colorscheme badwolf
+" set lines=50 columns=150
+" " colorscheme badwolf
+colorscheme solarized
 :syntax on
 filetype plugin indent on
 syntax enable
 set background=dark
-" colorscheme solarized
+colorscheme solarized
 set number
 set autoindent
 set nocompatible
