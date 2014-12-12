@@ -15,10 +15,13 @@ set autoindent
 
 set nocompatible
 set incsearch
-set mouse=a
+
+"剪贴板作为默认寄存器
+" set clipboard+=unnamed
+" set mouse=a
 set nrformats= "ctrl a 或x在0开头数字上操作不采用八进制
 set foldcolumn=4 "" 左边显示fold， +表示一个fold， - 表示打开的fold开始， |表示fold内容
-set foldlevel=1   "大于指定数量的shiftwidth的都会被fold
+set foldlevel=2   "大于指定数量的shiftwidth的都会被fold
 set backspace=2 "解决按下a进入insert模式不能使用delete键的问题
 set cursorline " Highlight current line
 " set diffopt=filler " Add vertical spaces to keep right and left aligned
@@ -66,7 +69,8 @@ set expandtab
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 let NERDTreeIgnore = ['\.pyc$']
 :let mapleader = ","
-:let maplocalleader = "\="
+" :let maplocalleader = "\="
+:let maplocalleader = "."
 :noremap <leader>- dd p
 :noremap <leader>_ ddkP
 :inoremap <leader><c-d> <esc>ddi
@@ -83,6 +87,8 @@ let NERDTreeIgnore = ['\.pyc$']
 "在选中区域两边添加"
 :vnoremap <leader>"" <esc>`>a"<esc>`<i"<esc>
 :inoremap jk <esc>
+
+nnoremap <F3> :GundoToggle<CR>
 
 "bind movements keys between windows
 map <c-j> <c-w>j
@@ -148,7 +154,6 @@ let g:EasyMotion_smartcase = 1
 map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
 
-nnoremap <F3> :GundoToggle<CR>
 
 
 
@@ -237,19 +242,30 @@ endif
 " https://github.com/c9s/perlomni.vim
 let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 
-
+"rust
 autocmd FileType rust nnoremap <leader>b :w<cr>:!cargo build<CR>
-
+autocmd FileType rust nnoremap <localleader>c :w<cr>:!clear<cr>:!rustc %:p<CR>
+autocmd FileType rust nnoremap <localleader>r :w<cr>:exe "!". expand("%:p")[0:-4]<cr>
 autocmd FileType rust nnoremap <leader>r :w<cr>:!cargo run<cr>
 
-autocmd FileType ruby nmap <leader>r :w<cr>:!ruby %<cr>
-autocmd FileType python  nmap <leader>r :w<cr>:!python  %<cr>
-autocmd FileType python  set foldmethod=indent
+
+"ruby
+autocmd FileType ruby nmap <leader>r :w<cr>:!ruby %:p<cr>
 autocmd FileType ruby  set foldmethod=indent
-autocmd FileType c  nmap <leader>b :w<cr>:!gcc %<cr>
+
+
+"python
+autocmd FileType python  nmap <leader>r :w<cr>:!python  %:p<cr>
+autocmd FileType python  set foldmethod=indent
+
+
+autocmd FileType c  nmap <leader>b :w<cr>:!gcc %:p<cr>
 autocmd FileType c  nmap <leader>r :w<cr>:!./a.out<cr>
 
+" shell 命令
 nmap <leader>c :!
 
-"剪贴板作为默认寄存器
-set clipboard+=unnamed
+"上一个shell命令
+nmap <leader>rr :!<Up><cr>
+
+nnoremap <leader>b :Tagbar<cr>
