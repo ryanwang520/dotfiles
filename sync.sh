@@ -1,6 +1,12 @@
 #!/bin/bash
 cd "$(dirname "$0")"
 git pull
+git submodule init
+git submodule update
+cd .vim
+git submodule init
+git submodule update
+cd ..
 
 function doIt() {
     rsync --exclude ".vim" --exclude ".git/" --exclude ".DS_Store" --exclude "sync.sh" --exclude "README.md" --exclude ".gitmodules" -av . ~;
