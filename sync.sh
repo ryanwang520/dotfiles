@@ -9,7 +9,7 @@ git submodule update
 cd ..
 
 function doIt() {
-    rsync --exclude ".vim" --exclude ".git/" --exclude ".DS_Store" --exclude "sync.sh" --exclude "README.md" --exclude ".gitmodules" -av . ~;
+    rsync  --exclude ".git/" --exclude ".DS_Store" --exclude "sync.sh" --exclude "README.md" --exclude ".gitmodules" -av . ~;
 }
 
 if [ "$1" == "--force" -o "$1" == "-f" ]; then
