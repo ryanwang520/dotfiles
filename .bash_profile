@@ -7,7 +7,6 @@ export GOROOT=$HOME/go
 export PATH="$PATH:$HOME/Library/Haskell/bin"
 export PATH="$PATH:/usr/sbin"
 export PATH=$PATH:$GOROOT/bin
-export JAVA_HOME=`/usr/libexec/java_home -v 1.7`
 export DOCKER_HOST=tcp://192.168.59.103:2376
 export DOCKER_CERT_PATH=~/.boot2docker/certs/boot2docker-vm
 export DOCKER_TLS_VERIFY=1
@@ -36,7 +35,11 @@ function server(){
     python -m SimpleHTTPServer "$port"
 }
 
-[[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
-source /usr/local/bin/virtualenvwrapper.sh
+os=$(uname -s)
+if [ $os = "Darwin" ]; then
+    export JAVA_HOME=`/usr/libexec/java_home -v 1.7`
+    [[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
+    source /usr/local/bin/virtualenvwrapper.sh
+fi
 
 alias proxy="export http_proxy='http://z.elema.com:1984' && export  https_proxy='http://z.elema.com:1984'"
