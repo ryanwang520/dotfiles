@@ -26,5 +26,4 @@ fi
 
 unset doIt
 
-#source ~/.zshrc
-
+source ~/.zshrc
