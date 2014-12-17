@@ -18,15 +18,11 @@ export PGDATA=/usr/local/var/postgres
 alias vi="vim"
 alias irb="irb --simple-prompt" 
 alias p="cd ~/projects"
-alias test="./manage.py test"
-# alias runserver="./manage.py runserver"
-alias shell="./manage.py shell"
 alias qj="export http_proxy='http://theironislands.f.getqujing.net:36779'\
 	export https_proxy='http://theironislands.f.getqujing.net:36779'"
 alias java_ls='/usr/libexec/java_home -V 2>&1 | grep -E "\d.\d.\d[,_]" | cut -d , -f 1 | colrm 1 4 | grep -v Home'
 alias phpr="~/.composer/vendor/d11wtq/boris/bin/boris"
 alias runtests="python -m unittest discover test"
-alias runserver="python paladin/server.py"
 
 function java_use() {
     export JAVA_HOME=$(/usr/libexec/java_home -v $1)
