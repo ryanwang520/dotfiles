@@ -34,12 +34,14 @@ function server(){
     open "http://localhost:${port}/"
     python -m SimpleHTTPServer "$port"
 }
+if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
+    source /usr/local/bin/virtualenvwrapper.sh
+fi
 
 os=$(uname -s)
 if [ $os = "Darwin" ]; then
     export JAVA_HOME=`/usr/libexec/java_home -v 1.7`
     [[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
-    source /usr/local/bin/virtualenvwrapper.sh
 fi
 
 alias proxy="export http_proxy='http://z.elema.com:1984' && export  https_proxy='http://z.elema.com:1984'"
