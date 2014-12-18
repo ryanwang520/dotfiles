@@ -157,3 +157,56 @@ nmap <leader>c :!
 
 "上一个shell命令
 nmap <leader>rr :!<Up><cr>
+
+function! CmdLine(str)
+    exe "menu Foo.Bar :" . a:str
+    emenu Foo.Bar
+    unmenu Foo
+endfunction
+
+function! VisualSearch(direction) range
+    let l:saved_reg = @"
+    execute "normal! vgvy"
+
+    let l:pattern = escape(@", '\\/.*$^~[]')
+    let l:pattern = substitute(l:pattern, "\n$", "", "")
+
+    if a:direction == 'b'
+        execute "normal ?" . l:pattern . "^M"
+    elseif a:direction == 'gv'
+        call CmdLine("vimgrep " . '/'. l:pattern . '/' . ' **/*.')
+    elseif a:direction == 'f'
+        execute "normal /" . l:pattern . "^M"
+    endif
+
+    let @/ = l:pattern
+    let @" = l:saved_reg
+endfunction
+
+vnoremap <silent> * :call VisualSearch('f')<CR>
+vnoremap <silent> # :call VisualSearch('b')<CR>
+
+" When you press gv you vimgrep after the selected text
+vmap <silent> gv :call VisualSearch('gv')<CR>
+map <leader>g :vimgrep // **/*.<left><left><left><left><left><left><left> 
+
+" c-x c-x => git grep the word under cursor
+let g:gitgrepprg="git\\ grep\\ -n"
+let g:gitroot="`git rev-parse --show-cdup`"
+
+function! GitGrep(args)
+    let grepprg_bak=&grepprg
+    exec "set grepprg=" . g:gitgrepprg
+    execute 'silent! grep "\<' . a:args . '\>" ' . g:gitroot
+    botright copen
+    let &grepprg=grepprg_bak
+    exec "redraw!"
+endfunction
+
+func GitGrepWord()
+    normal! "zyiw
+    call GitGrep(getreg('z'))
+endf
+
+nmap <C-x><C-x> :call GitGrepWord()<CR>
+nmap <C-x><C-c> :normal! "zyiw<CR>:Ack <c-r>z<CR>
