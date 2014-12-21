@@ -2,21 +2,64 @@ filetype off
 execute pathogen#infect()
 call pathogen#helptags()
 
+:let mapleader = ","
+:let maplocalleader = "."
 set t_Co=256
 :syntax on
 filetype plugin indent on
 :syntax enable
 set background=dark
-:colorscheme badwolf
+":colorscheme badwolf
 set number
 set autoindent
 
 set nocompatible
 set incsearch
+nnoremap <leader>l :set nohlsearch!<cr>
+
+
+" Enable Syntax Colors
+"  in GUI mode we go with fruity and Monaco 13
+"  in CLI mode myterm looks better (fruity is GUI only)
+syntax on
+if has("gui_running")
+  colorscheme fruity
+  if has("mac")
+    set guifont=Monaco:h13
+    set fuoptions=maxvert,maxhorz
+    " does not work properly on os x
+    " au GUIEnter * set fullscreen
+  else
+    set guifont=DejaVu\ Sans\ Mono\ 10
+  endif
+else
+  colorscheme molokai
+  let g:molokai_original = 1
+  let g:rehash256 = 1
+  
+endif
+
+
+" The PC is fast enough, do syntax highlight syncing from start
+autocmd BufEnter * :syntax sync fromstart
+
+
+nnoremap <Down> gj
+nnoremap <Up> gk
+vnoremap <Down> gj
+vnoremap <Up> gk
+
+" Ack on <leader>a
+nnoremap <leader>a :Ack 
+nnoremap <leader>A :AckFromSearch<CR>
+
+" Quit window on <leader>q
+nnoremap <leader>q :q<CR>
+
 
 set nrformats= "ctrl a 或x在0开头数字上操作不采用八进制
 set foldcolumn=4 "" 左边显示fold， +表示一个fold， - 表示打开的fold开始， |表示fold内容
-set foldlevel=2   "大于指定数量的shiftwidth的都会被fold
+set foldlevel=999   "大于指定数量的shiftwidth的都会被fold
 set backspace=2 "解决按下a进入insert模式不能使用delete键的问题
 set cursorline " Highlight current line
 set encoding=utf-8 nobomb " BOM often causes trouble
@@ -57,12 +100,10 @@ set expandtab
 " set guifont=consolas:h20
 " set lines=100 columns=200
 "
-" nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
+ "nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
 set hlsearch
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 let NERDTreeIgnore = ['\.pyc$']
-:let mapleader = ","
-:let maplocalleader = "."
 :noremap <leader>- dd p
 :noremap <leader>_ ddkP
 :inoremap <leader><c-d> <esc>ddi
