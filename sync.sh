@@ -3,9 +3,11 @@ cd "$(dirname "$0")"
 git pull
 git submodule init
 git submodule update
+git submodule foreach git pull origin master
 cd .vim
 git submodule init
 git submodule update
+git submodule foreach git pull origin master
 cd ..
 
 function doIt() {
