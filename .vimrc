@@ -5,31 +5,24 @@ call pathogen#helptags()
 set t_Co=256
 :syntax on
 filetype plugin indent on
-syntax enable
+:syntax enable
 set background=dark
-" colorscheme solarized
-"colorscheme badwolf
-colorscheme desert
+:colorscheme badwolf
 set number
 set autoindent
 
 set nocompatible
 set incsearch
 
-"剪贴板作为默认寄存器
-" set clipboard+=unnamed
-" set mouse=a
 set nrformats= "ctrl a 或x在0开头数字上操作不采用八进制
 set foldcolumn=4 "" 左边显示fold， +表示一个fold， - 表示打开的fold开始， |表示fold内容
 set foldlevel=2   "大于指定数量的shiftwidth的都会被fold
 set backspace=2 "解决按下a进入insert模式不能使用delete键的问题
 set cursorline " Highlight current line
-" set diffopt=filler " Add vertical spaces to keep right and left aligned
-" set diffopt+=iwhite " Ignore whitespace changes (focus on code changes)
 set encoding=utf-8 nobomb " BOM often causes trouble
 
-runtime macros/matchit.vim
-cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
+"runtime macros/matchit.vim
+"cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 
 set laststatus=2 " Always show statusline
 let g:airline_powerline_fonts = 1
@@ -65,7 +58,7 @@ set expandtab
 " set lines=100 columns=200
 "
 " nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
-" set hlsearch
+set hlsearch
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 let NERDTreeIgnore = ['\.pyc$']
 :let mapleader = ","
@@ -96,7 +89,8 @@ map <c-l> <c-w>l
 map <c-h> <c-w>h
 
 map <leader>p :CtrlP<cr>
-map <leader>t :FufTag<cr>
+map <leader>m :CtrlPMRU<cr>
+"map <leader>t :FufTag<cr>
 
 nnoremap <leader>pr :execute "rightbelow vsplit " . bufname("#")<cr>
 nnoremap <leader>pl :execute "leftabove vsplit " . bufname("#")<cr>
@@ -104,24 +98,24 @@ nnoremap <leader>pl :execute "leftabove vsplit " . bufname("#")<cr>
 
 " inoremap <esc> <nop>
 augroup filetype_html
-    autocmd!
-    autocmd FileType html nnoremap <buffer> <localleader>f Vatzf
+autocmd!
+autocmd FileType html nnoremap <buffer> <localleader>f Vatzf
 augroup END
 
 augroup filetype_python
-    autocmd!
-    autocmd FileType python     :iabbrev <buffer> re  return<left>
+autocmd!
+autocmd FileType python     :iabbrev <buffer> re  return<left>
 augroup END
 
 augroup filetype_markdown
-    autocmd!
-    autocmd FileType markdown :onoremap ih :<c-u>execute "normal! ?^\\(==\\\\|--\\)\\+\r:nohlsearch\rkvg_"<cr>
+autocmd!
+autocmd FileType markdown :onoremap ih :<c-u>execute "normal! ?^\\(==\\\\|--\\)\\+\r:nohlsearch\rkvg_"<cr>
 :onoremap ah :<c-u>execute "normal! ?^==\\+$\r:nohlsearch\rg_vk0"<cr>
 augroup END
 " Vimscript file settings ---------------------- {{{
 " augroup filetype_vim
-    " autocmd!
-    " autocmd FileType vim setlocal foldmethod=marker
+" autocmd!
+" autocmd FileType vim setlocal foldmethod=marker
 " augroup END
 " }}}
 
@@ -159,28 +153,28 @@ nmap <leader>c :!
 nmap <leader>rr :!<Up><cr>
 
 function! CmdLine(str)
-    exe "menu Foo.Bar :" . a:str
-    emenu Foo.Bar
-    unmenu Foo
+exe "menu Foo.Bar :" . a:str
+emenu Foo.Bar
+unmenu Foo
 endfunction
 
 function! VisualSearch(direction) range
-    let l:saved_reg = @"
-    execute "normal! vgvy"
+let l:saved_reg = @"
+execute "normal! vgvy"
 
-    let l:pattern = escape(@", '\\/.*$^~[]')
-    let l:pattern = substitute(l:pattern, "\n$", "", "")
+let l:pattern = escape(@", '\\/.*$^~[]')
+let l:pattern = substitute(l:pattern, "\n$", "", "")
 
-    if a:direction == 'b'
-        execute "normal ?" . l:pattern . "^M"
-    elseif a:direction == 'gv'
-        call CmdLine("vimgrep " . '/'. l:pattern . '/' . ' **/*.')
-    elseif a:direction == 'f'
-        execute "normal /" . l:pattern . "^M"
-    endif
+if a:direction == 'b'
+    execute "normal ?" . l:pattern . "^M"
+elseif a:direction == 'gv'
+    call CmdLine("vimgrep " . '/'. l:pattern . '/' . ' **/*.')
+elseif a:direction == 'f'
+    execute "normal /" . l:pattern . "^M"
+endif
 
-    let @/ = l:pattern
-    let @" = l:saved_reg
+let @/ = l:pattern
+let @" = l:saved_reg
 endfunction
 
 vnoremap <silent> * :call VisualSearch('f')<CR>
@@ -194,19 +188,30 @@ map <leader>g :vimgrep // **/*.<left><left><left><left><left><left><left>
 let g:gitgrepprg="git\\ grep\\ -n"
 let g:gitroot="`git rev-parse --show-cdup`"
 
-function! GitGrep(args)
+if !exists('GitGrep')
+    function! GitGrep(args)
     let grepprg_bak=&grepprg
     exec "set grepprg=" . g:gitgrepprg
     execute 'silent! grep "\<' . a:args . '\>" ' . g:gitroot
     botright copen
     let &grepprg=grepprg_bak
     exec "redraw!"
-endfunction
+    endfunction
+endif
 
-func GitGrepWord()
+if !exists('GitGrepWord')
+    function! GitGrepWord()
     normal! "zyiw
     call GitGrep(getreg('z'))
-endf
+    endfunction
+endif
 
 nmap <C-x><C-x> :call GitGrepWord()<CR>
 nmap <C-x><C-c> :normal! "zyiw<CR>:Ack <c-r>z<CR>
+
+inoremap <leader>w  <esc>:w<cr>a
+nnoremap <leader>w  :w<cr>
+
+
+
+let g:syntastic_python_checkers=['flake8', 'python']

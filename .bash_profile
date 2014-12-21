@@ -22,6 +22,7 @@ alias qj="export http_proxy='http://theironislands.f.getqujing.net:36779'\
 alias java_ls='/usr/libexec/java_home -V 2>&1 | grep -E "\d.\d.\d[,_]" | cut -d , -f 1 | colrm 1 4 | grep -v Home'
 alias phpr="~/.composer/vendor/d11wtq/boris/bin/boris"
 alias runtests="python -m unittest discover test"
+export PYTHONPATH=''
 
 function java_use() {
     export JAVA_HOME=$(/usr/libexec/java_home -v $1)
