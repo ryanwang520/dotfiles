@@ -1,3 +1,4 @@
+set encoding=utf-8 nobomb " BOM often causes trouble
 filetype off
 execute pathogen#infect()
 call pathogen#helptags()
@@ -12,6 +13,7 @@ set background=dark
 ":colorscheme badwolf
 set number
 set autoindent
+
 
 set nocompatible
 set incsearch
@@ -55,6 +57,7 @@ nnoremap <leader>A :AckFromSearch<CR>
 
 " Quit window on <leader>q
 nnoremap <leader>q :q<CR>
+nnoremap <leader>qa :qa<CR>
 
 
 set nrformats= "ctrl a 或x在0开头数字上操作不采用八进制
@@ -62,13 +65,12 @@ set foldcolumn=4 "" 左边显示fold， +表示一个fold， - 表示打开的fo
 set foldlevel=999   "大于指定数量的shiftwidth的都会被fold
 set backspace=2 "解决按下a进入insert模式不能使用delete键的问题
 set cursorline " Highlight current line
-set encoding=utf-8 nobomb " BOM often causes trouble
 
 "runtime macros/matchit.vim
 "cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 
 set laststatus=2 " Always show statusline
-let g:airline_powerline_fonts = 1
+"let g:airline_powerline_fonts = 1 #mvim下会乱码的
 let g:airline_theme='luna'
 nmap <F8> :TagbarToggle<CR>
 

@@ -1,5 +1,5 @@
 export EDITOR=vim
-export PATH="$PATH:."
+export PATH="$PATH:.:$HOME/bin/"
 export PATH="/usr/local/bin:$PATH"
 export PATH=$PATH:~/bin
 export PATH=$PATH:/usr/local/opt/go/libexec/bin
