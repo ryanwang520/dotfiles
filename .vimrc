@@ -257,4 +257,9 @@ nnoremap <leader>w  :w<cr>
 
 
 
-let g:syntastic_python_checkers=['flake8', 'python']
+let g:syntastic_python_checkers=['pylint', 'flake8', 'python']
+autocmd BufWritePost *.py call Flake8()
+
+nmap <leader>A :tab split<cr>:Ack ""<Left>
+
+nmap <leader>a :tab split<cr>:Ack <C-r><C-w><cr>
