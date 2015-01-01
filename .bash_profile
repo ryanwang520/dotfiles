@@ -1,7 +1,6 @@
 export EDITOR=vim
-export PATH="$PATH:.:$HOME/bin/"
+export PATH="$PATH:.:$HOME/bin"
 export PATH="/usr/local/bin:$PATH"
-export PATH=$PATH:~/bin
 export PATH=$PATH:/usr/local/opt/go/libexec/bin
 export GOROOT=$HOME/go
 export PATH="$PATH:$HOME/Library/Haskell/bin"
@@ -24,11 +23,25 @@ alias phpr="~/.composer/vendor/d11wtq/boris/bin/boris"
 alias runtests="python -m unittest discover test"
 export PYTHONPATH=''
 
+os=$(uname -s)
+
 function java_use() {
     export JAVA_HOME=$(/usr/libexec/java_home -v $1)
         export PATH=$JAVA_HOME/bin:$PATH
 	    java -version
     }
+
+function git_replace() {
+    echo $1;
+    echo $2;
+    if [ $os = 'Darwin' ]
+    then
+        git grep -l $1 | xargs sed -ie s/${1}/${2}/g;
+    else
+        git grep -l $1 | xargs sed -i s/${1}/${2}/g;
+    fi
+}
+
 
 function server(){
     local port="${1:-8000}"
@@ -39,10 +52,12 @@ if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
     source /usr/local/bin/virtualenvwrapper.sh
 fi
 
-os=$(uname -s)
 if [ $os = "Darwin" ]; then
+    source ~/.profile
     export JAVA_HOME=`/usr/libexec/java_home -v 1.7`
     [[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
 fi
 
 alias proxy="export http_proxy='http://z.elema.com:1984' && export  https_proxy='http://z.elema.com:1984'"
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*

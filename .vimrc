@@ -263,3 +263,20 @@ autocmd BufWritePost *.py call Flake8()
 nmap <leader>A :tab split<cr>:Ack ""<Left>
 
 nmap <leader>a :tab split<cr>:Ack <C-r><C-w><cr>
+
+" Trigger configuration. Do not use <tab> if you use
+" https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+
+"go
+let g:go_fmt_command = "goimports"
+let g:go_fmt_autosave = 0
+
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
