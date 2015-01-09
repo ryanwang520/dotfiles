@@ -9,7 +9,7 @@ set t_Co=256
 :syntax on
 filetype plugin indent on
 :syntax enable
-set background=dark
+"set background=dark
 ":colorscheme badwolf
 set number
 set autoindent
@@ -24,6 +24,10 @@ nnoremap <leader>l :set nohlsearch!<cr>
 "  in GUI mode we go with fruity and Monaco 13
 "  in CLI mode myterm looks better (fruity is GUI only)
 syntax on
+
+let g:molokai_original = 1
+let g:rehash256 = 1
+
 if has("gui_running")
   colorscheme fruity
   if has("mac")
@@ -36,8 +40,6 @@ if has("gui_running")
   endif
 else
   colorscheme molokai
-  let g:molokai_original = 1
-  let g:rehash256 = 1
   
 endif
 
@@ -73,6 +75,7 @@ set laststatus=2 " Always show statusline
 "let g:airline_powerline_fonts = 1 #mvim下会乱码的
 let g:airline_theme='luna'
 nmap <F8> :TagbarToggle<CR>
+nmap <leader>t  :TagbarToggle<CR>
 
 autocmd vimenter * if !argc() | NERDTree | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
@@ -89,13 +92,6 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 let g:NERDTreeShowHidden=1
 
 map <F2> :NERDTreeToggle <cr>
-
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
-set textwidth=80
-set smarttab
-set expandtab
 
 :set noswapfile
 
@@ -280,3 +276,30 @@ let g:go_fmt_autosave = 0
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
 let g:go_highlight_structs = 1
+
+
+augroup rust
+    autocmd FileType rust setlocal completeopt-=preview
+    autocmd FileType rust nnoremap <leader>b :w<cr>:!cargo build<CR>
+    autocmd FileType rust nnoremap <localleader>c :w<cr>:!clear<cr>:!rustc %:p<CR>
+    autocmd FileType rust noremap <localleader>r :w<cr>:exe "!". expand("%:p")[0:-4]<cr>
+    autocmd FileType rust nnoremap <leader>r :w<cr>:!cargo run<cr>
+augroup end
+
+augroup py
+    autocmd FileType python setlocal tabstop=4 softtabstop=4 shiftwidth=4 textwidth=79 smarttab expandtab foldmethod=indent
+    autocmd FileType python nmap <leader>r :w<cr>:!python  %:p<cr>
+augroup end
+
+augroup rb
+    autocmd FileType ruby setlocal tabstop=2 softtabstop=2 shiftwidth=2 smarttab expandtab foldmethod=indent
+    autocmd FileType ruvy nmap <leader>r :w<cr>:!ruby %:p<cr> 
+augroup end
+
+augroup js
+    autocmd FileType javascript setlocal expandtab shiftwidth=2 shiftround tabstop=2
+augroup end
+
+augroup go
+    autocmd FileType go nmap <leader>r :w<cr>:!go run %:p<cr>
+augroup end
