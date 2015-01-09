@@ -2,10 +2,10 @@ export EDITOR=vim
 export PATH="$PATH:.:$HOME/bin"
 export PATH="/usr/local/bin:$PATH"
 export PATH=$PATH:/usr/local/opt/go/libexec/bin
-export GOROOT=$HOME/go
+export GOPATH=$HOME/gocode
 export PATH="$PATH:$HOME/Library/Haskell/bin"
 export PATH="$PATH:/usr/sbin"
-export PATH=$PATH:$GOROOT/bin
+export PATH=$PATH:$GOPATH/bin
 export DOCKER_HOST=tcp://192.168.59.103:2376
 export DOCKER_CERT_PATH=~/.boot2docker/certs/boot2docker-vm
 export DOCKER_TLS_VERIFY=1
@@ -56,8 +56,13 @@ if [ $os = "Darwin" ]; then
     source ~/.profile
     export JAVA_HOME=`/usr/libexec/java_home -v 1.7`
     [[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
+
+    export PYENV_ROOT="$HOME/.pyenv"
+    export PATH="$PYENV_ROOT/bin:$PATH"
+    eval "$(pyenv init -)"
+    export PATH="$HOME/.rbenv/bin:$PATH"
+    eval "$(rbenv init -)"
 fi
 
 alias proxy="export http_proxy='http://z.elema.com:1984' && export  https_proxy='http://z.elema.com:1984'"
 
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
