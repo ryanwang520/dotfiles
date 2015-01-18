@@ -129,6 +129,8 @@ map <c-h> <c-w>h
 
 map <leader>p :CtrlP<cr>
 map <leader>m :CtrlPMRU<cr>
+map <leader>d :CtrlPBufTagAll<cr>
+
 "map <leader>t :FufTag<cr>
 
 nnoremap <leader>pr :execute "rightbelow vsplit " . bufname("#")<cr>
@@ -253,7 +255,7 @@ nnoremap <leader>w  :w<cr>
 
 
 
-let g:syntastic_python_checkers=['pylint', 'flake8', 'python']
+let g:syntastic_python_checkers=['flake8', 'python']
 autocmd BufWritePost *.py call Flake8()
 
 nmap <leader>A :tab split<cr>:Ack ""<Left>
@@ -302,4 +304,5 @@ augroup end
 
 augroup go
     autocmd FileType go nmap <leader>r :w<cr>:!go run %:p<cr>
+    autocmd BufWritePre *.go GoFmt
 augroup end
