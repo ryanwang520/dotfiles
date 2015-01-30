@@ -21,6 +21,7 @@ alias qj="export http_proxy='http://theironislands.f.getqujing.net:36779'\
 alias java_ls='/usr/libexec/java_home -V 2>&1 | grep -E "\d.\d.\d[,_]" | cut -d , -f 1 | colrm 1 4 | grep -v Home'
 alias phpr="~/.composer/vendor/d11wtq/boris/bin/boris"
 alias runtests="python -m unittest discover test"
+alias gpu="git pull --rebase upstream"
 export PYTHONPATH=''
 
 os=$(uname -s)
@@ -30,6 +31,11 @@ function java_use() {
         export PATH=$JAVA_HOME/bin:$PATH
 	    java -version
     }
+
+function rebase_new(){
+	git fetch upstream;
+	git rebase upstream/new
+}
 
 function git_replace() {
     echo $1;
@@ -62,3 +68,6 @@ if [ $os = "Darwin" ]; then
 fi
 
 alias proxy="export http_proxy='http://z.elema.com:1984' && export  https_proxy='http://z.elema.com:1984'"
+
+alias kafka="kafka-server-start.sh /usr/local/etc/kafka/server.properties"
+alias zookeeper="zkServer start"

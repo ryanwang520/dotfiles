@@ -4,6 +4,11 @@ if [ ! -d '$USERNAME/.oh-my-zsh' ]; then
     echo "clone oh-my-zsh"
     git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
 fi
+
+if [! $SHELL != /bin/zsh  ]; then
+        sudo chsh -s /bin/zsh $USERNAME
+fi
+
 git pull
 git submodule init
 git submodule update

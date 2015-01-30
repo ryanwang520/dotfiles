@@ -13,6 +13,7 @@ filetype plugin indent on
 ":colorscheme badwolf
 set number
 set autoindent
+set expandtab
 
 
 set nocompatible
@@ -255,7 +256,7 @@ nnoremap <leader>w  :w<cr>
 
 
 
-let g:syntastic_python_checkers=['flake8', 'python']
+let g:syntastic_python_checkers=['flake8', 'python', 'pylint']
 autocmd BufWritePost *.py call Flake8()
 
 nmap <leader>A :tab split<cr>:Ack ""<Left>
