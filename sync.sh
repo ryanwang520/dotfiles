@@ -5,9 +5,6 @@ if [ ! -d '$USERNAME/.oh-my-zsh' ]; then
     git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
 fi
 
-if [[ $SHELL != /bin/zsh  ]]; then
-        sudo chsh -s /bin/zsh $USERNAME
-fi
 
 if [ uname = "Linux" ]; then
         sudo apt-get  intall zsh -y
