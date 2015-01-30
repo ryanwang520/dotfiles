@@ -9,6 +9,9 @@ if [[ $SHELL != /bin/zsh  ]]; then
         sudo chsh -s /bin/zsh $USERNAME
 fi
 
+if [ uname = "Linux" ]; then
+        sudo apt-get  intall zsh -y
+fi
 git pull
 git submodule init
 git submodule update
