@@ -1,14 +1,11 @@
 #!/bin/bash
 cd "$(dirname "$0")"
-if [ ! -d '$USERNAME/.oh-my-zsh' ]; then
+if [ ! -d "$HOME/.oh-my-zsh" ]; then
     echo "clone oh-my-zsh"
     git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
 fi
 
 
-if [ uname = "Linux" ]; then
-        sudo apt-get  intall zsh -y
-fi
 git pull
 git submodule init
 git submodule update
