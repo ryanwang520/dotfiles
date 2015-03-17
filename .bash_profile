@@ -24,6 +24,12 @@ alias runtests="python -m unittest discover test"
 alias gpu="git pull --rebase upstream"
 export PYTHONPATH=''
 
+
+PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
+PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
+MANPATH="/usr/local/opt/gnu-sed/libexec/gnuman:$MANPATH"
+
 os=$(uname -s)
 
 function java_use() {
@@ -37,15 +43,11 @@ function rebase_new(){
 	git rebase upstream/new
 }
 
+
 function git_replace() {
     echo $1;
     echo $2;
-    if [ $os = 'Darwin' ]
-    then
-        git grep -l $1 | xargs sed -ie s/${1}/${2}/g;
-    else
-        git grep -l $1 | xargs sed -i s/${1}/${2}/g;
-    fi
+    git grep -l $1 | xargs sed -i s/${1}/${2}/g;
 }
 
 
