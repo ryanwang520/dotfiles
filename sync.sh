@@ -8,12 +8,10 @@ fi
 
 git pull
 git submodule init
-git submodule update
-git submodule foreach git pull origin master
+git submodule update --remote
 cd .vim
 git submodule init
-git submodule update
-git submodule foreach git pull origin master
+git submodule update --remote
 cd ..
 
 function doIt() {
