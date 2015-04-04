@@ -74,7 +74,7 @@ set cursorline " Highlight current line
 
 set laststatus=2 " Always show statusline
 "let g:airline_powerline_fonts = 1 #mvim下会乱码的
-let g:airline_theme='luna'
+"let g:airline_theme='luna'
 nmap <F8> :TagbarToggle<CR>
 nmap <leader>t  :TagbarToggle<CR>
 
@@ -256,8 +256,17 @@ nnoremap <leader>w  :w<cr>
 
 
 
-let g:syntastic_python_checkers=['flake8', 'python', 'pylint']
-autocmd BufWritePost *.py call Flake8()
+"let g:syntastic_python_checkers=['flake8', 'pylint', 'python']
+
+" for syntastic warning shows
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
 nmap <leader>A :tab split<cr>:Ack ""<Left>
 
