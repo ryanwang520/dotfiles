@@ -55,7 +55,7 @@ vnoremap <Down> gj
 vnoremap <Up> gk
 
 " Ack on <leader>a
-nnoremap <leader>a :Ack 
+nnoremap <leader>a :Ack
 nnoremap <leader>A :AckFromSearch<CR>
 
 " Quit window on <leader>q
@@ -120,7 +120,7 @@ let NERDTreeIgnore = ['\.pyc$']
 :vnoremap <leader>"" <esc>`>a"<esc>`<i"<esc>
 :inoremap jk <esc>
 
-nnoremap <F3> :GundoToggle<CR>
+"nnoremap <F3> :GundoToggle<CR>
 
 "bind movements keys between windows
 map <c-j> <c-w>j
@@ -162,10 +162,9 @@ augroup END
 " }}}
 
 
-:nnoremap <leader>grep :silent execute "grep! -R " . shellescape(expand("<cWORD>")) . " ."<cr>:copen<cr>
+":nnoremap <leader>grep :silent execute "grep! -R " . shellescape(expand("<cWORD>")) . " ."<cr>:copen<cr>
 
 :nnoremap <leader>N :setlocal number!<cr>
-map <leader>n :NERDTreeToggle<CR>
 
 " nnoremap <Space> za
 
@@ -194,69 +193,15 @@ nmap <leader>c :!
 "上一个shell命令
 nmap <leader>rr :!<Up><cr>
 
-function! CmdLine(str)
-exe "menu Foo.Bar :" . a:str
-emenu Foo.Bar
-unmenu Foo
-endfunction
 
-function! VisualSearch(direction) range
-let l:saved_reg = @"
-execute "normal! vgvy"
 
-let l:pattern = escape(@", '\\/.*$^~[]')
-let l:pattern = substitute(l:pattern, "\n$", "", "")
-
-if a:direction == 'b'
-    execute "normal ?" . l:pattern . "^M"
-elseif a:direction == 'gv'
-    call CmdLine("vimgrep " . '/'. l:pattern . '/' . ' **/*.')
-elseif a:direction == 'f'
-    execute "normal /" . l:pattern . "^M"
-endif
-
-let @/ = l:pattern
-let @" = l:saved_reg
-endfunction
-
-vnoremap <silent> * :call VisualSearch('f')<CR>
-vnoremap <silent> # :call VisualSearch('b')<CR>
-
-" When you press gv you vimgrep after the selected text
-vmap <silent> gv :call VisualSearch('gv')<CR>
-map <leader>g :vimgrep // **/*.<left><left><left><left><left><left><left> 
-
-" c-x c-x => git grep the word under cursor
-let g:gitgrepprg="git\\ grep\\ -n"
-let g:gitroot="`git rev-parse --show-cdup`"
-
-if !exists('GitGrep')
-    function! GitGrep(args)
-    let grepprg_bak=&grepprg
-    exec "set grepprg=" . g:gitgrepprg
-    execute 'silent! grep "\<' . a:args . '\>" ' . g:gitroot
-    botright copen
-    let &grepprg=grepprg_bak
-    exec "redraw!"
-    endfunction
-endif
-
-if !exists('GitGrepWord')
-    function! GitGrepWord()
-    normal! "zyiw
-    call GitGrep(getreg('z'))
-    endfunction
-endif
-
-nmap <C-x><C-x> :call GitGrepWord()<CR>
-nmap <C-x><C-c> :normal! "zyiw<CR>:Ack <c-r>z<CR>
 
 inoremap <leader>w  <esc>:w<cr>a
 nnoremap <leader>w  :w<cr>
 
 
 
-"let g:syntastic_python_checkers=['flake8', 'pylint', 'python']
+let g:syntastic_python_checkers=['pep8', 'python']
 
 " for syntastic warning shows
 set statusline+=%#warningmsg#

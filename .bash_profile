@@ -78,3 +78,6 @@ alias proxy="export http_proxy='http://z.elema.com:1984' && export  https_proxy=
 alias kafka="kafka-server-start.sh /usr/local/etc/kafka/server.properties"
 alias zookeeper="zkServer start"
 #alias find=gfind
+
+#alias ps4="proxychains4"
+#alias git="proxychains4 /usr/bin/git"
