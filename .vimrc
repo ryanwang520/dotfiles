@@ -203,13 +203,14 @@ nnoremap <leader>w  :w<cr>
 
 let g:syntastic_python_checkers=['pep8', 'python']
 
+
 " for syntastic warning shows
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
+let g:syntastic_auto_loc_list = 2
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
@@ -244,7 +245,7 @@ augroup rust
 augroup end
 
 augroup py
-    autocmd FileType python setlocal tabstop=4 softtabstop=4 shiftwidth=4 textwidth=79 smarttab expandtab foldmethod=indent
+    autocmd FileType python setlocal tabstop=4   softtabstop=4 shiftwidth=4 smarttab expandtab foldmethod=indent colorcolumn=80
     autocmd FileType python nmap <leader>r :w<cr>:!python  %:p<cr>
 augroup end
 
