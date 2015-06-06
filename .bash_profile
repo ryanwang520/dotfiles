@@ -6,9 +6,6 @@ export GOPATH=$HOME/gocode
 export PATH="$PATH:$HOME/Library/Haskell/bin"
 export PATH="$PATH:/usr/sbin"
 export PATH=$PATH:$GOPATH/bin
-export DOCKER_HOST=tcp://192.168.59.103:2376
-export DOCKER_CERT_PATH=~/.boot2docker/certs/boot2docker-vm
-export DOCKER_TLS_VERIFY=1
 #ri format
 export RI="--format ansi --width 70"
 export PGDATA=/usr/local/var/postgres
@@ -61,6 +58,9 @@ if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
 fi
 
 if [ $os = "Darwin" ]; then
+    export DOCKER_HOST=tcp://192.168.59.103:2376
+    export DOCKER_CERT_PATH=~/.boot2docker/certs/boot2docker-vm
+    export DOCKER_TLS_VERIFY=1
     source ~/.profile
     export JAVA_HOME=`/usr/libexec/java_home -v 1.7`
     [[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
@@ -81,3 +81,4 @@ alias zookeeper="zkServer start"
 
 #alias ps4="proxychains4"
 #alias git="proxychains4 /usr/bin/git"
+export TSUBAKI=~/ele/tsubaki

@@ -15,6 +15,8 @@ set number
 set autoindent
 set expandtab
 
+set tabstop=4
+
 
 set nocompatible
 set incsearch
@@ -258,6 +260,10 @@ augroup js
     autocmd FileType javascript setlocal expandtab shiftwidth=2 shiftround tabstop=2
 augroup end
 
+augroup c
+    autocmd FileType c setlocal foldmethod=syntax
+augroup end
+
 augroup go
     autocmd FileType go nmap <leader>r :w<cr>:!go run %:p<cr>
     autocmd BufWritePre *.go GoFmt
@@ -273,3 +279,7 @@ augroup end
  :nmap <silent> <Leader>i <Plug>IndentGuidesToggle
 
  let g:Powerline_symbols = 'fancy'
+
+ set rtp+=~/.fzf
+
+map <leader>f :FZF<CR>
