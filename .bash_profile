@@ -9,16 +9,25 @@ export PATH=$PATH:$GOPATH/bin
 #ri format
 export RI="--format ansi --width 70"
 export PGDATA=/usr/local/var/postgres
+export AWKPATH=''
 
 alias vi="vim"
+alias sudo="sudo "
 alias irb="irb --simple-prompt" 
 alias p="cd ~/projects"
-alias qj="export http_proxy='http://theironislands.f.getqujing.net:36779'\
-	export https_proxy='http://theironislands.f.getqujing.net:36779'"
+#alias qj="export http_proxy='http://theironislands.f.getqujing.net:36779'\
+	#export https_proxy='http://theironislands.f.getqujing.net:36779'"
+http_proxy='http://127.0.0.1:8016'
+https_proxy='http://127.0.0.1:8016'
+# 缅怀死去的曲径
+alias qj="export http_proxy; export https_proxy"
+alias jq="unset http_proxy; unset https_proxy"
+
 alias java_ls='/usr/libexec/java_home -V 2>&1 | grep -E "\d.\d.\d[,_]" | cut -d , -f 1 | colrm 1 4 | grep -v Home'
 alias phpr="~/.composer/vendor/d11wtq/boris/bin/boris"
 alias runtests="python -m unittest discover test"
 alias gpu="git pull --rebase upstream"
+alias ipython="ipython2"
 export PYTHONPATH=''
 
 
@@ -44,7 +53,7 @@ function rebase_upstream(){
 function git_replace() {
     echo $1;
     echo $2;
-    git grep -l $1 | xargs sed -i s/${1}/${2}/g;
+    git grep -E -l $1 | xargs sed -i s/${1}/${2}/g;
 }
 
 
@@ -63,7 +72,8 @@ if [ $os = "Darwin" ]; then
     export DOCKER_TLS_VERIFY=1
     source ~/.profile
     export JAVA_HOME=`/usr/libexec/java_home -v 1.7`
-    [[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
+    #too slow
+    #[[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
 
     export PATH="$HOME/.rbenv/bin:$PATH"
     eval "$(rbenv init -)"
@@ -72,6 +82,8 @@ else
     export LANG=en_US.UTF-8
     export LC_ALL=en_US.UTF-8
 fi
+
+export LC_CTYPE=en_US.UTF-8
 
 alias proxy="export http_proxy='http://z.elema.com:1984' && export  https_proxy='http://z.elema.com:1984'"
 
@@ -82,3 +94,5 @@ alias zookeeper="zkServer start"
 #alias ps4="proxychains4"
 #alias git="proxychains4 /usr/bin/git"
 export TSUBAKI=~/ele/tsubaki
+
+export FPP_EDITOR=vim

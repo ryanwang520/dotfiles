@@ -21,6 +21,7 @@ set tabstop=4
 set nocompatible
 set incsearch
 nnoremap <leader>l :set nohlsearch!<cr>
+nnoremap <leader>v :tabclose<cr>
 
 
 " Enable Syntax Colors
@@ -203,7 +204,7 @@ nnoremap <leader>w  :w<cr>
 
 
 
-let g:syntastic_python_checkers=['pep8', 'python']
+let g:syntastic_python_checkers=['python', 'flake8']
 
 
 " for syntastic warning shows
@@ -232,6 +233,8 @@ let g:UltiSnipsEditSplit="vertical"
 "go
 let g:go_fmt_command = "goimports"
 let g:go_fmt_autosave = 0
+
+let g:go_fmt_fail_silently = 1
 
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
