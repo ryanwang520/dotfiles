@@ -82,7 +82,8 @@ nmap <F8> :TagbarToggle<CR>
 nmap <leader>t  :TagbarToggle<CR>
 
 autocmd vimenter * if !argc() | NERDTree | endif
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
 
 "当前目录下生成ctags标签文件
 :nnoremap <f6> :!ctags -R<CR>

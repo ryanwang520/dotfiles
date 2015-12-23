@@ -12,6 +12,7 @@ export PGDATA=/usr/local/var/postgres
 export AWKPATH=''
 
 alias vi="vim"
+alias gbt="/Users/vita/gocode/bin/gb"
 alias sudo="sudo "
 alias irb="irb --simple-prompt" 
 alias p="cd ~/projects"
@@ -27,8 +28,11 @@ alias java_ls='/usr/libexec/java_home -V 2>&1 | grep -E "\d.\d.\d[,_]" | cut -d 
 alias phpr="~/.composer/vendor/d11wtq/boris/bin/boris"
 alias runtests="python -m unittest discover test"
 alias gpu="git pull --rebase upstream"
+alias ls="ls -G --color"
 alias ipython="ipython2"
+alias py="~/projects/forks/cpython/python.exe"
 export PYTHONPATH=''
+
 
 
 PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
@@ -67,16 +71,18 @@ if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
 fi
 
 if [ $os = "Darwin" ]; then
-    export DOCKER_HOST=tcp://192.168.59.103:2376
-    export DOCKER_CERT_PATH=~/.boot2docker/certs/boot2docker-vm
-    export DOCKER_TLS_VERIFY=1
+    #export DOCKER_HOST=tcp://192.168.59.103:2376
+    #export DOCKER_CERT_PATH=~/.boot2docker/certs/boot2docker-vm
+    #export DOCKER_TLS_VERIFY=1
     source ~/.profile
-    export JAVA_HOME=`/usr/libexec/java_home -v 1.7`
+    export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
     #too slow
     #[[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
 
     export PATH="$HOME/.rbenv/bin:$PATH"
     eval "$(rbenv init -)"
+    alias cat="lolcat"
+    alias diff="colordiff"
 else
     export LANGUAGE=en_US.UTF-8
     export LANG=en_US.UTF-8
@@ -96,3 +102,4 @@ alias zookeeper="zkServer start"
 export TSUBAKI=~/ele/tsubaki
 
 export FPP_EDITOR=vim
+export PATH=/Users/vita/projects/forks/depot_tools/depot_tools:"$PATH"
