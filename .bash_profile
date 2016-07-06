@@ -3,9 +3,10 @@ export PATH="$PATH:.:$HOME/bin"
 export PATH="/usr/local/bin:$PATH"
 export PATH=$PATH:/usr/local/opt/go/libexec/bin
 export GOPATH=$HOME/gocode
+export GO15VENDOREXPERIMENT=1
 export PATH="$PATH:$HOME/Library/Haskell/bin"
 export PATH="$PATH:/usr/sbin"
-export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:$GOPATH/bin:$HOME/Library/Android/sdk/platform-tools
 #ri format
 export RI="--format ansi --width 70"
 export PGDATA=/usr/local/var/postgres
@@ -14,7 +15,7 @@ export AWKPATH=''
 alias vi="vim"
 alias gbt="/Users/vita/gocode/bin/gb"
 alias sudo="sudo "
-alias irb="irb --simple-prompt" 
+alias irb="irb --simple-prompt"
 alias p="cd ~/projects"
 #alias qj="export http_proxy='http://theironislands.f.getqujing.net:36779'\
 	#export https_proxy='http://theironislands.f.getqujing.net:36779'"
@@ -22,23 +23,22 @@ http_proxy='http://127.0.0.1:8016'
 https_proxy='http://127.0.0.1:8016'
 # 缅怀死去的曲径
 alias qj="export http_proxy; export https_proxy"
-alias jq="unset http_proxy; unset https_proxy"
+alias uq="unset http_proxy; unset https_proxy"
 
 alias java_ls='/usr/libexec/java_home -V 2>&1 | grep -E "\d.\d.\d[,_]" | cut -d , -f 1 | colrm 1 4 | grep -v Home'
 alias phpr="~/.composer/vendor/d11wtq/boris/bin/boris"
 alias runtests="python -m unittest discover test"
 alias gpu="git pull --rebase upstream"
-alias ls="ls -G --color"
 alias ipython="ipython2"
 alias py="~/projects/forks/cpython/python.exe"
 export PYTHONPATH=''
 
 
 
-PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
-MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
-PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
-MANPATH="/usr/local/opt/gnu-sed/libexec/gnuman:$MANPATH"
+#PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+#MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
+#PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
+#MANPATH="/usr/local/opt/gnu-sed/libexec/gnuman:$MANPATH"
 
 os=$(uname -s)
 
@@ -53,11 +53,21 @@ function rebase_upstream(){
 	git rebase upstream/$1;
 }
 
+function rb(){
+        rebase_upstream master;
+}
+
 
 function git_replace() {
     echo $1;
     echo $2;
     git grep -E -l $1 | xargs sed -i s/${1}/${2}/g;
+}
+
+function v() {
+        cd ~/virtual_machines/$1
+        vagrant up
+        vagrant ssh
 }
 
 
@@ -71,9 +81,10 @@ if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
 fi
 
 if [ $os = "Darwin" ]; then
-    #export DOCKER_HOST=tcp://192.168.59.103:2376
-    #export DOCKER_CERT_PATH=~/.boot2docker/certs/boot2docker-vm
-    #export DOCKER_TLS_VERIFY=1
+    #export DOCKER_TLS_VERIFY="1"
+    #export DOCKER_HOST="tcp://192.168.99.100:2376"
+    #export DOCKER_CERT_PATH="/Users/Miracle/.docker/machine/machines/default"
+    #export DOCKER_MACHINE_NAME="default"
     source ~/.profile
     export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
     #too slow
@@ -83,6 +94,8 @@ if [ $os = "Darwin" ]; then
     eval "$(rbenv init -)"
     alias cat="lolcat"
     alias diff="colordiff"
+    alias ls="gls -G --color"
+    alias dm="docker-machine"
 else
     export LANGUAGE=en_US.UTF-8
     export LANG=en_US.UTF-8
@@ -103,3 +116,11 @@ export TSUBAKI=~/ele/tsubaki
 
 export FPP_EDITOR=vim
 export PATH=/Users/vita/projects/forks/depot_tools/depot_tools:"$PATH"
+
+export DEVPI_USER=eleme
+export DEVPI_PWD=eleMe
+
+function maybach() {
+  j Maybach
+  workon Maybach
+}

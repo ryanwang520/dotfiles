@@ -31,6 +31,8 @@ syntax on
 
 let g:molokai_original = 1
 let g:rehash256 = 1
+let g:UltiSnipsUsePythonVersion = 2
+
 
 if has("gui_running")
   colorscheme fruity
@@ -204,8 +206,9 @@ inoremap <leader>w  <esc>:w<cr>a
 nnoremap <leader>w  :w<cr>
 
 
-
-let g:syntastic_python_checkers=['python', 'flake8']
+" flake8 checker too slow
+"let g:syntastic_python_checkers=['python', 'flake8']
+let g:syntastic_python_checkers=['python']
 
 
 " for syntastic warning shows
@@ -253,6 +256,14 @@ augroup end
 augroup py
     autocmd FileType python setlocal tabstop=4   softtabstop=4 shiftwidth=4 smarttab expandtab foldmethod=indent colorcolumn=80
     autocmd FileType python nmap <leader>r :w<cr>:!python  %:p<cr>
+
+augroup end
+
+autocmd BufWritePre *.py :%s/\s\+$//e
+
+augroup scala
+        "解决scala和syntax插件冲突的问题
+    autocmd FileType scala let g:syntastic_check_on_open = 0
 augroup end
 
 augroup rb
@@ -284,6 +295,9 @@ augroup end
 
  let g:Powerline_symbols = 'fancy'
 
- set rtp+=~/.fzf
+set rtp+=/usr/local/opt/fzf
 
 map <leader>f :FZF<CR>
+
+let g:syntastic_python_python_exec = '/usr/local/bin/python'
+
