@@ -29,7 +29,6 @@ alias java_ls='/usr/libexec/java_home -V 2>&1 | grep -E "\d.\d.\d[,_]" | cut -d 
 alias phpr="~/.composer/vendor/d11wtq/boris/bin/boris"
 alias runtests="python -m unittest discover test"
 alias gpu="git pull --rebase upstream"
-alias ipython="ipython2"
 alias py="~/projects/forks/cpython/python.exe"
 export PYTHONPATH=''
 
@@ -122,5 +121,8 @@ export DEVPI_PWD=eleMe
 
 function maybach() {
   j Maybach
-  workon Maybach
+  source .venv/bin/activate
+}
+function ferrari() {
+  j ferrari
 }

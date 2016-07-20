@@ -46,7 +46,7 @@ if has("gui_running")
   endif
 else
   colorscheme molokai
-  
+
 endif
 
 
@@ -78,8 +78,8 @@ set cursorline " Highlight current line
 "cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 
 set laststatus=2 " Always show statusline
-"let g:airline_powerline_fonts = 1 #mvim下会乱码的
-"let g:airline_theme='luna'
+let g:airline_powerline_fonts = 1
+let g:airline_theme='powerlineish'
 nmap <F8> :TagbarToggle<CR>
 nmap <leader>t  :TagbarToggle<CR>
 
@@ -112,7 +112,7 @@ let NERDTreeIgnore = ['\.pyc$']
 :noremap <leader>- dd p
 :noremap <leader>_ ddkP
 :inoremap <leader><c-d> <esc>ddi
-:inoremap <leader><c-u> <esc>viwU  
+:inoremap <leader><c-u> <esc>viwU
 :nnoremap <leader><c-u> viwUo
 :nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 "重载.vimrc文件
@@ -268,7 +268,7 @@ augroup end
 
 augroup rb
     autocmd FileType ruby setlocal tabstop=2 softtabstop=2 shiftwidth=2 smarttab expandtab foldmethod=indent
-    autocmd FileType ruvy nmap <leader>r :w<cr>:!ruby %:p<cr> 
+    autocmd FileType ruvy nmap <leader>r :w<cr>:!ruby %:p<cr>
 augroup end
 
 augroup js
