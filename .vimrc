@@ -208,7 +208,7 @@ nnoremap <leader>w  :w<cr>
 
 " flake8 checker too slow
 "let g:syntastic_python_checkers=['python', 'flake8']
-let g:syntastic_python_checkers=['python']
+let g:syntastic_python_checkers=['python', 'pycodestyle']
 
 
 " for syntastic warning shows
@@ -299,5 +299,8 @@ set rtp+=/usr/local/opt/fzf
 
 map <leader>f :FZF<CR>
 
-let g:syntastic_python_python_exec = '/usr/local/bin/python'
+let g:syntastic_python_python_exec = '/usr/local/bin/python3'
 
+" 普通的太傻逼, ESLINT又太慢, 不要检查了, 看得烦躁
+let g:syntastic_html_checkers = []
+let g:syntastic_javascript_checkers = []

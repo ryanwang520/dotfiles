@@ -13,23 +13,23 @@ export PGDATA=/usr/local/var/postgres
 export AWKPATH=''
 
 alias vi="vim"
-alias gbt="/Users/vita/gocode/bin/gb"
+alias gbt="/Users/Miracle/gocode/bin/gb"
 alias sudo="sudo "
 alias irb="irb --simple-prompt"
-alias p="cd ~/projects"
 #alias qj="export http_proxy='http://theironislands.f.getqujing.net:36779'\
 	#export https_proxy='http://theironislands.f.getqujing.net:36779'"
-http_proxy='http://127.0.0.1:8016'
-https_proxy='http://127.0.0.1:8016'
+#http_proxy='http://127.0.0.1:8016'
+#https_proxy='http://127.0.0.1:8016'
+#alias qj="export http_proxy; export https_proxy"
 # 缅怀死去的曲径
-alias qj="export http_proxy; export https_proxy"
+alias qj="export https_proxy=http://127.0.0.1:6152;export http_proxy=http://127.0.0.1:6152"
 alias uq="unset http_proxy; unset https_proxy"
 
 alias java_ls='/usr/libexec/java_home -V 2>&1 | grep -E "\d.\d.\d[,_]" | cut -d , -f 1 | colrm 1 4 | grep -v Home'
 alias phpr="~/.composer/vendor/d11wtq/boris/bin/boris"
 alias runtests="python -m unittest discover test"
 alias gpu="git pull --rebase upstream"
-alias py="~/projects/forks/cpython/python.exe"
+alias py="~/forks/cpython/python.exe"
 export PYTHONPATH=''
 
 
@@ -51,6 +51,15 @@ function rebase_upstream(){
 	git fetch upstream;
 	git rebase upstream/$1;
 }
+
+function pip-install() {
+  pip install $1 && pip freeze | grep -i "$1=="  >> requirements.txt
+}
+
+function pip-install-dev() {
+  pip install $1 && pip freeze | grep -i "$1=="  >> dev-requirements.txt
+}
+
 
 function rb(){
         rebase_upstream master;
@@ -75,9 +84,11 @@ function server(){
     open "http://localhost:${port}/"
     python -m SimpleHTTPServer "$port"
 }
-if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
-    source /usr/local/bin/virtualenvwrapper.sh
-fi
+
+# fucking too slow
+#if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
+    #source /usr/local/bin/virtualenvwrapper.sh
+#fi
 
 if [ $os = "Darwin" ]; then
     #export DOCKER_TLS_VERIFY="1"
@@ -90,10 +101,11 @@ if [ $os = "Darwin" ]; then
     #[[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
 
     export PATH="$HOME/.rbenv/bin:$PATH"
+    export PATH="$PATH:/Applications/elasticsearch-5.0.0/bin"
     eval "$(rbenv init -)"
     alias cat="lolcat"
     alias diff="colordiff"
-    alias ls="gls -G --color"
+    #alias ls="gls -G --color"
     alias dm="docker-machine"
 else
     export LANGUAGE=en_US.UTF-8
@@ -103,7 +115,7 @@ fi
 
 export LC_CTYPE=en_US.UTF-8
 
-alias proxy="export http_proxy='http://z.elema.com:1984' && export  https_proxy='http://z.elema.com:1984'"
+#alias proxy="export http_proxy='http://z.elema.com:1984' && export  https_proxy='http://z.elema.com:1984'"
 
 alias kafka="kafka-server-start.sh /usr/local/etc/kafka/server.properties"
 alias zookeeper="zkServer start"
@@ -114,15 +126,17 @@ alias zookeeper="zkServer start"
 export TSUBAKI=~/ele/tsubaki
 
 export FPP_EDITOR=vim
-export PATH=/Users/vita/projects/forks/depot_tools/depot_tools:"$PATH"
+export PATH=/Users/Miracle/projects/forks/depot_tools/depot_tools:"$PATH"
 
 export DEVPI_USER=eleme
 export DEVPI_PWD=eleMe
 
-function maybach() {
-  j Maybach
+export HORO_SETTINGS=settings.py
+
+function horo() {
+  j horo
   source .venv/bin/activate
 }
-function ferrari() {
-  j ferrari
+function spice() {
+  j spice
 }
