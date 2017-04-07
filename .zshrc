@@ -5,7 +5,9 @@ export ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="cobalt2"
+if [[ $TERM_PROGRAM == 'iTerm.app' ]] then
+  ZSH_THEME="cobalt2"
+fi
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -82,10 +84,11 @@ export LANG=en_US.UTF-8
 SAVEHIST=10000
 HISTFILE=~/.zsh_history
 
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-#PROMPT='%{$fg[green]%}%n%{$reset_color%}%{$fg[magenta]%} @ %{$reset_color%}%{$fg[yellow]%}%M%{$reset_color%} ${ret_status}%{$fg_bold[green]%}%p %{$fg[cyan]%}%~ %{$fg_bold[blue]%}$(git_prompt_info)%{$fg_bold[blue]%} % %{$reset_color%}
-#\$ '
 export PATH="/usr/local/sbin:$PATH"
+
+if [[ $TERM_PROGRAM != 'iTerm.app' ]] then
+  PROMPT='%{$fg[green]%}%n%{$reset_color%}%{$fg[magenta]%} @ %{$reset_color%}%{$fg[yellow]%}%M%{$reset_color%} ${ret_status}%{$fg_bold[green]%}%p %{$fg[cyan]%}%~ %{$fg_bold[blue]%}$(git_prompt_info)%{$fg_bold[blue]%} % %{$reset_color%}\$ '
+fi
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
