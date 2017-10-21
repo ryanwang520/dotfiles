@@ -28,13 +28,14 @@ alias uq="unset http_proxy; unset https_proxy"
 alias java_ls='/usr/libexec/java_home -V 2>&1 | grep -E "\d.\d.\d[,_]" | cut -d , -f 1 | colrm 1 4 | grep -v Home'
 alias phpr="~/.composer/vendor/d11wtq/boris/bin/boris"
 alias runtests="python -m unittest discover test"
-alias gpu="git pull --rebase upstream"
+alias gpu="git pull --rebase upstream master"
 alias py="~/forks/cpython/python.exe"
-alias conda="~/anaconda3/bin/conda"
+#alias conda="~/anaconda3/bin/conda"
 
 os=$(uname -s)
 if [ $os = "Darwin" ]; then
-    export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
+    export JAVA_HOME=`/usr/libexec/java_home -v 9`
+    export PATH=$JAVA_HOME/bin:$PATH
     export PATH="$HOME/.rbenv/bin:$PATH"
     export PATH="$PATH:/Applications/elasticsearch-5.0.0/bin"
     alias diff="colordiff"
@@ -46,6 +47,11 @@ else
 fi
 
 
+function amend() {
+  git add .
+  git commit --amend
+  git push -f
+}
 
 function java_use() {
     export JAVA_HOME=$(/usr/libexec/java_home -v $1)
@@ -78,6 +84,10 @@ function git_replace() {
     git grep -E -l $1 | xargs sed -i s/${1}/${2}/g;
 }
 
+function activate() {
+    source ~/anaconda3/bin/activate $1
+}
+
 function server(){
     local port="${1:-8000}"
     open "http://localhost:${port}/"
@@ -94,3 +104,8 @@ function v() {
         vagrant up
         vagrant ssh
 }
+REACT_EDITOR=vscode
+
+
+
+export PATH="$HOME/.cargo/bin:$PATH"

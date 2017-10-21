@@ -1,4 +1,5 @@
 set encoding=utf-8 nobomb " BOM often causes trouble
+
 filetype off
 execute pathogen#infect()
 call pathogen#helptags()
@@ -9,14 +10,12 @@ set t_Co=256
 :syntax on
 filetype plugin indent on
 :syntax enable
-"set background=dark
-":colorscheme badwolf
 set number
+highlight LineNr ctermfg=grey ctermbg=236
 set autoindent
 set expandtab
 
 set tabstop=4
-
 
 set nocompatible
 set incsearch
@@ -37,7 +36,7 @@ let g:UltiSnipsUsePythonVersion = 2
 if has("gui_running")
   colorscheme fruity
   if has("mac")
-    set guifont=Monaco:h13
+    "set guifont=Operator\ Mono:h14
     set fuoptions=maxvert,maxhorz
     " does not work properly on os x
     " au GUIEnter * set fullscreen
@@ -45,10 +44,13 @@ if has("gui_running")
     set guifont=DejaVu\ Sans\ Mono\ 10
   endif
 else
-  colorscheme molokai
+  let g:airline#extensions#tabline#enabled = 1
+  "colorscheme molokai
 
 endif
 
+"默认syntax折叠
+set foldmethod=syntax
 
 " The PC is fast enough, do syntax highlight syncing from start
 autocmd BufEnter * :syntax sync fromstart
@@ -69,10 +71,28 @@ nnoremap <leader>qa :qa<CR>
 
 
 set nrformats= "ctrl a 或x在0开头数字上操作不采用八进制
-set foldcolumn=4 "" 左边显示fold， +表示一个fold， - 表示打开的fold开始， |表示fold内容
+"set foldcolumn=4 "" 左边显示fold， +表示一个fold， - 表示打开的fold开始， |表示fold内容
 set foldlevel=999   "大于指定数量的shiftwidth的都会被fold
 set backspace=2 "解决按下a进入insert模式不能使用delete键的问题
 set cursorline " Highlight current line
+
+"高亮当前行
+hi CursorLine cterm=NONE ctermbg=237
+
+
+" cursor变细
+if $TERM_PROGRAM =~ "iTerm"
+  let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+  let &t_SR = "\<Esc>]50;CursorShape=2\x7"
+  let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+endif
+
+if $TMUX != ""
+  let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+  let &t_SR = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=2\x7\<Esc>\\"
+  let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+endif
+
 
 "runtime macros/matchit.vim
 "cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
@@ -80,6 +100,7 @@ set cursorline " Highlight current line
 set laststatus=2 " Always show statusline
 let g:airline_powerline_fonts = 1
 let g:airline_theme='powerlineish'
+
 nmap <F8> :TagbarToggle<CR>
 nmap <leader>t  :TagbarToggle<CR>
 
@@ -97,6 +118,15 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 " autocmd FileType python setlocal completeopt-=preview
 
 let g:NERDTreeShowHidden=1
+let g:NERDTreeHighlightCursorline=0
+
+"去掉垂直分割线
+highlight VertSplit ctermfg=237
+set fillchars=
+"不显示文件结束后各行的波浪号
+:hi EndOfBuffer ctermfg=237
+
+
 
 map <F2> :NERDTreeToggle <cr>
 
@@ -218,7 +248,7 @@ set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 2
-let g:syntastic_check_on_open = 1
+"let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
 nmap <leader>A :tab split<cr>:Ack ""<Left>
@@ -256,8 +286,8 @@ augroup end
 augroup py
     autocmd FileType python setlocal tabstop=4   softtabstop=4 shiftwidth=4 smarttab expandtab foldmethod=indent colorcolumn=80
     autocmd FileType python nmap <leader>r :w<cr>:!python  %:p<cr>
-
 augroup end
+
 
 autocmd BufWritePre *.py :%s/\s\+$//e
 
@@ -285,7 +315,7 @@ augroup go
 augroup end
 
 " 随 vim 自启动
- let g:indent_guides_enable_on_vim_startup=1
+"let g:indent_guides_enable_on_vim_startup=1
 " " 从第二层开始可视化显示缩进
  let g:indent_guides_start_level=2
 " " 色块宽度
@@ -304,3 +334,4 @@ let g:syntastic_python_python_exec = '/usr/local/bin/python3'
 " 普通的太傻逼, ESLINT又太慢, 不要检查了, 看得烦躁
 let g:syntastic_html_checkers = []
 let g:syntastic_javascript_checkers = []
+" let g:rustfmt_autosave = 1
