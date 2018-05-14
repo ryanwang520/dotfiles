@@ -30,7 +30,7 @@ syntax on
 
 let g:molokai_original = 1
 let g:rehash256 = 1
-let g:UltiSnipsUsePythonVersion = 2
+let g:UltiSnipsUsePythonVersion = 3
 
 
 if has("gui_running")
@@ -285,7 +285,9 @@ augroup end
 
 augroup py
     autocmd FileType python setlocal tabstop=4   softtabstop=4 shiftwidth=4 smarttab expandtab foldmethod=indent colorcolumn=80
-    autocmd FileType python nmap <leader>r :w<cr>:!python  %:p<cr>
+    autocmd FileType python nmap <leader>r :w<cr>:!python3  %:p<cr>
+    "autocmd BufWritePost *.py :silent !autopep8 --in-place %:p
+    autocmd BufWritePost *.py :set autoread
 augroup end
 
 

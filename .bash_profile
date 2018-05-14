@@ -1,7 +1,7 @@
 export EDITOR=vim
 export PATH="$PATH:.:$HOME/bin"
 export PATH="/usr/local/bin:$PATH:/usr/local/opt/go/libexec/bin"
-export GOPATH=$HOME/gocode
+export GOPATH=$(go env GOPATH)
 export PATH="$PATH:$HOME/Library/Haskell/bin"
 export PATH="$PATH:/usr/sbin"
 export PATH=$PATH:$GOPATH/bin
@@ -24,21 +24,24 @@ alias gbt="/Users/Miracle/gocode/bin/gb"
 alias sudo="sudo "
 alias irb="irb --simple-prompt"
 alias qj="export https_proxy=http://127.0.0.1:6152;export http_proxy=http://127.0.0.1:6152"
+alias ss="export https_proxy=http://127.0.0.1:8118;export http_proxy=http://127.0.0.1:8118"
 alias uq="unset http_proxy; unset https_proxy"
 alias java_ls='/usr/libexec/java_home -V 2>&1 | grep -E "\d.\d.\d[,_]" | cut -d , -f 1 | colrm 1 4 | grep -v Home'
 alias phpr="~/.composer/vendor/d11wtq/boris/bin/boris"
 alias runtests="python -m unittest discover test"
 alias gpu="git pull --rebase upstream master"
 alias py="~/forks/cpython/python.exe"
-#alias conda="~/anaconda3/bin/conda"
+alias vscode="/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/code"
+alias flask="pipenv run flask"
+alias pip="pip3"
 
 os=$(uname -s)
 if [ $os = "Darwin" ]; then
-    export JAVA_HOME=`/usr/libexec/java_home -v 9`
+    export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
     export PATH=$JAVA_HOME/bin:$PATH
     export PATH="$HOME/.rbenv/bin:$PATH"
     export PATH="$PATH:/Applications/elasticsearch-5.0.0/bin"
-    alias diff="colordiff"
+    #alias diff="colordiff"
     alias dm="docker-machine"
 else
     export LANGUAGE=en_US.UTF-8
@@ -59,10 +62,6 @@ function java_use() {
 	    java -version
     }
 
-function rebase_upstream(){
-	git fetch upstream;
-	git rebase upstream/$1;
-}
 
 function pip-install() {
   pip install $1 && pip freeze | grep -i "$1=="  >> requirements.txt
@@ -72,6 +71,11 @@ function pip-install-dev() {
   pip install $1 && pip freeze | grep -i "$1=="  >> dev-requirements.txt
 }
 
+
+function rebase_upstream(){
+	git fetch upstream;
+	git rebase upstream/$1;
+}
 
 function rb(){
         rebase_upstream master;
@@ -84,14 +88,11 @@ function git_replace() {
     git grep -E -l $1 | xargs sed -i s/${1}/${2}/g;
 }
 
-function activate() {
-    source ~/anaconda3/bin/activate $1
-}
-
 function server(){
     local port="${1:-8000}"
-    open "http://localhost:${port}/"
-    python -m SimpleHTTPServer "$port"
+    #open "http://localhost:${port}/"
+    #python -m SimpleHTTPServer "$port"
+    http-server -g -o -c-1 -p "$port"
 }
 
 function horo() {
@@ -107,5 +108,12 @@ function v() {
 REACT_EDITOR=vscode
 
 
+export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
+
+# added by Anaconda3 installer
+#export PATH="/Users/ryanwang/anaconda3/bin:$PATH"
+
+
+alias kcd='kubectl config set-context $(kubectl config current-context) --namespace '
 
 export PATH="$HOME/.cargo/bin:$PATH"
