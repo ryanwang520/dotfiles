@@ -33,7 +33,7 @@ alias gpu="git pull --rebase upstream master"
 alias py="~/forks/cpython/python.exe"
 alias vscode="/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/code"
 alias flask="pipenv run flask"
-alias pip="pip3"
+#alias pip="pip3"
 
 os=$(uname -s)
 if [ $os = "Darwin" ]; then
@@ -51,9 +51,11 @@ fi
 
 
 function amend() {
+  current_branch=`git rev-parse --abbrev-ref HEAD`
+
   git add .
-  git commit --amend
-  git push -f
+  git commit --amend --no-edit
+  git push --set-upstream origin $current_branch -f
 }
 
 function java_use() {
@@ -79,6 +81,9 @@ function rebase_upstream(){
 
 function rb(){
         rebase_upstream master;
+}
+function sd(){
+        rebase_upstream cndevelop;
 }
 
 
@@ -115,5 +120,24 @@ export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
 
 
 alias kcd='kubectl config set-context $(kubectl config current-context) --namespace '
+alias k=kubectl
 
 export PATH="$HOME/.cargo/bin:$PATH"
+
+alias docker_ssh="screen ~/Library/Containers/com.docker.docker/Data/com.docker.driver.amd64-linux/tty"
+
+export PATH=/Applications/flutter/bin:$PATH
+
+
+function deploy() {
+        make publish
+        ssh sougang.me "cd /home/Miracle/gemini;source ~/.bash_profile; bump"
+}
+
+alias mit="mitmdump --listen-port 8010 -s ~/bin/mit.py"
+
+#export NVM_DIR="$HOME/.nvm"
+#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+#[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+

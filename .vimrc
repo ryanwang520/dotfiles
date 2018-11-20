@@ -138,7 +138,7 @@ map <F2> :NERDTreeToggle <cr>
  "nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
 set hlsearch
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
-let NERDTreeIgnore = ['\.pyc$']
+let NERDTreeIgnore = ['\.pyc$', '\.egg-info$', 'venv$', '\.idea$', '\.eggs$', '.pytest_cache$', '\.git$', '__pycache__$']
 :noremap <leader>- dd p
 :noremap <leader>_ ddkP
 :inoremap <leader><c-d> <esc>ddi
@@ -337,3 +337,7 @@ let g:syntastic_python_python_exec = '/usr/local/bin/python3'
 let g:syntastic_html_checkers = []
 let g:syntastic_javascript_checkers = []
 " let g:rustfmt_autosave = 1
+"
+"
+let g:javascript_plugin_flow = 1
+
