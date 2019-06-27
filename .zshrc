@@ -167,5 +167,3 @@ function bounce() {
 
 add-zsh-hook precmd bounce
 
-# added by pipsi (https://github.com/mitsuhiko/pipsi)
-export PATH="/Users/ryanwang/.local/bin:$PATH"

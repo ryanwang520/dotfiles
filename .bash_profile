@@ -1,18 +1,16 @@
 export EDITOR=vim
 export PATH="$PATH:.:$HOME/bin"
-export PATH="/usr/local/bin:$PATH:/usr/local/opt/go/libexec/bin"
+export PATH="$PATH:/usr/local/bin:/usr/local/opt/go/libexec/bin"
 export GOPATH=$(go env GOPATH)
 export PATH="$PATH:$HOME/Library/Haskell/bin"
 export PATH="$PATH:/usr/sbin"
 export PATH=$PATH:$GOPATH/bin
-export PATH=/Users/Miracle/projects/forks/depot_tools/depot_tools:"$PATH"
 export RI="--format ansi --width 70"
-export PGDATA=/usr/local/var/postgres
-export AWKPATH=''
-export PYTHONPATH=''
+#export PGDATA=/usr/local/var/postgres
+#export AWKPATH=''
+export PYTHONPATH='.'
 export LC_CTYPE=en_US.UTF-8
 export FPP_EDITOR=vim
-export HORO_SETTINGS=settings.py
 export ANDROID_HOME=${HOME}/Library/Android/sdk
 export PATH=${PATH}:${ANDROID_HOME}/tools
 export PATH=${PATH}:${ANDROID_HOME}/platform-tools
@@ -23,24 +21,20 @@ alias vi="vim"
 alias gbt="/Users/Miracle/gocode/bin/gb"
 alias sudo="sudo "
 alias irb="irb --simple-prompt"
-alias qj="export https_proxy=http://127.0.0.1:6152;export http_proxy=http://127.0.0.1:6152"
+#alias qj="export https_proxy=http://127.0.0.1:6152;export http_proxy=http://127.0.0.1:6152"
+alias qj="export https_proxy=http://127.0.0.1:1087;export http_proxy=http://127.0.0.1:1087"
 alias ss="export https_proxy=http://127.0.0.1:8118;export http_proxy=http://127.0.0.1:8118"
 alias uq="unset http_proxy; unset https_proxy"
 alias java_ls='/usr/libexec/java_home -V 2>&1 | grep -E "\d.\d.\d[,_]" | cut -d , -f 1 | colrm 1 4 | grep -v Home'
 alias phpr="~/.composer/vendor/d11wtq/boris/bin/boris"
 alias runtests="python -m unittest discover test"
-alias gpu="git pull --rebase upstream master"
 alias py="~/forks/cpython/python.exe"
 alias vscode="/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/code"
-alias flask="pipenv run flask"
-#alias pip="pip3"
 
 os=$(uname -s)
 if [ $os = "Darwin" ]; then
-    export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
+    export JAVA_HOME=`/usr/libexec/java_home -v 9`
     export PATH=$JAVA_HOME/bin:$PATH
-    export PATH="$HOME/.rbenv/bin:$PATH"
-    export PATH="$PATH:/Applications/elasticsearch-5.0.0/bin"
     #alias diff="colordiff"
     alias dm="docker-machine"
 else
@@ -100,18 +94,15 @@ function server(){
     http-server -g -o -c-1 -p "$port"
 }
 
-function horo() {
-  j horo
-  source .venv/bin/activate
-}
 
 function v() {
         cd ~/virtual_machines/$1
         vagrant up
         vagrant ssh
 }
-REACT_EDITOR=vscode
 
+
+export REACT_EDITOR="/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/code"
 
 export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
 
@@ -124,9 +115,9 @@ alias k=kubectl
 
 export PATH="$HOME/.cargo/bin:$PATH"
 
-alias docker_ssh="screen ~/Library/Containers/com.docker.docker/Data/com.docker.driver.amd64-linux/tty"
+alias docker_ssh="screen ~/Library/Containers/com.docker.docker/Data/vms/0/tty"
 
-export PATH=/Applications/flutter/bin:$PATH
+export PATH=~/flutter/bin:$PATH
 
 
 function deploy() {
@@ -136,8 +127,30 @@ function deploy() {
 
 alias mit="mitmdump --listen-port 8010 -s ~/bin/mit.py"
 
-#export NVM_DIR="$HOME/.nvm"
-#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-#[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+alias gpu="git pull --rebase upstream master"
+alias gstash="git stash --include-untracked"
+alias gapply="git stash apply"
 
 
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+
+
+function nvm_activate() {
+        export NVM_DIR="$HOME/.nvm"
+        [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+        [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+}
+
+function use_node() {
+        nvm_activate
+        nvm use $1
+}
+
+function enable_rerere() {
+    git config --global rerere.enabled true
+}
+
+function gpush(){
+    git push upstream `git rev-parse --abbrev-ref HEAD`
+}
