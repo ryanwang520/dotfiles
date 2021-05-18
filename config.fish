@@ -10,6 +10,8 @@ export PATH="$PATH:.:$HOME/bin"
 export PATH="$PATH:/usr/local/bin:/usr/local/opt/go/libexec/bin"
 export PATH="$PATH:$HOME/Library/Haskell/bin"
 export PATH="$PATH:/usr/sbin"
+export PATH="$PATH:/Users/ryanwang/Library/Application Support/Coursier/bin"
+
 
 export PATH="$HOME/flutter/bin:$PATH"
 export PUB_HOSTED_URL=https://pub.flutter-io.cn
