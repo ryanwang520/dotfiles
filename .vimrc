@@ -22,32 +22,24 @@ set incsearch
 nnoremap <leader>l :set nohlsearch!<cr>
 nnoremap <leader>v :tabclose<cr>
 
+let g:user_emmet_install_global = 0
+autocmd FileType html,css EmmetInstall
 
-" Enable Syntax Colors
-"  in GUI mode we go with fruity and Monaco 13
-"  in CLI mode myterm looks better (fruity is GUI only)
-syntax on
 
-let g:molokai_original = 1
 let g:rehash256 = 1
 let g:UltiSnipsUsePythonVersion = 3
 
 
-if has("gui_running")
-  colorscheme fruity
-  if has("mac")
-    "set guifont=Operator\ Mono:h14
-    set fuoptions=maxvert,maxhorz
-    " does not work properly on os x
-    " au GUIEnter * set fullscreen
-  else
-    set guifont=DejaVu\ Sans\ Mono\ 10
-  endif
-else
-  let g:airline#extensions#tabline#enabled = 1
-  "colorscheme molokai
+let g:airline#extensions#tabline#enabled = 1
 
+if (has("termguicolors"))
+ set termguicolors
 endif
+colorscheme onedark
+
+let g:onedark_terminal_italics=1
+
+
 
 "默认syntax折叠
 set foldmethod=syntax
@@ -238,7 +230,8 @@ nnoremap <leader>w  :w<cr>
 
 " flake8 checker too slow
 "let g:syntastic_python_checkers=['python', 'flake8']
-let g:syntastic_python_checkers=['python', 'pycodestyle']
+"let g:syntastic_python_checkers=['python', 'pycodestyle']
+let g:syntastic_python_checkers=['python']
 
 
 " for syntastic warning shows
@@ -284,7 +277,7 @@ augroup rust
 augroup end
 
 augroup py
-    autocmd FileType python setlocal tabstop=4   softtabstop=4 shiftwidth=4 smarttab expandtab foldmethod=indent colorcolumn=80
+    autocmd FileType python setlocal tabstop=4   softtabstop=4 shiftwidth=4 smarttab expandtab foldmethod=indent colorcolumn=100
     autocmd FileType python nmap <leader>r :w<cr>:!python3  %:p<cr>
     "autocmd BufWritePost *.py :silent !autopep8 --in-place %:p
     autocmd BufWritePost *.py :set autoread
@@ -317,7 +310,7 @@ augroup go
 augroup end
 
 " 随 vim 自启动
-"let g:indent_guides_enable_on_vim_startup=1
+let g:indent_guides_enable_on_vim_startup=1
 " " 从第二层开始可视化显示缩进
  let g:indent_guides_start_level=2
 " " 色块宽度
@@ -340,4 +333,5 @@ let g:syntastic_javascript_checkers = []
 "
 "
 let g:javascript_plugin_flow = 1
+
 
