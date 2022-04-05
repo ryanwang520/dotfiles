@@ -129,9 +129,6 @@ function fish_user_key_bindings
   fish_default_key_bindings
 end
 
-alias ls='exa -G  --color auto --icons -a -s type'
-alias ll='exa -l --color always --icons -a -s type'
-
 alias gpum='git push upstream master'
 
 alias y="yarn"
