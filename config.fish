@@ -1,16 +1,25 @@
 starship init fish | source
 
-alias j=z
+#alias j=z
+alias rm=trash
+alias ls=exa
+alias cat='bat --paging=never'
 
 export EDITOR=vim
 export GOPATH=$HOME/go
 export GOBIN=$GOPATH/bin
-export PATH="$PATH:$GOBIN"
+export PATH="/opt/homebrew/bin:$PATH:$GOBIN"
 export PATH="$PATH:.:$HOME/bin"
 export PATH="$PATH:/usr/local/bin:/usr/local/opt/go/libexec/bin"
 export PATH="$PATH:$HOME/Library/Haskell/bin"
 export PATH="$PATH:/usr/sbin"
 export PATH="$PATH:/Users/ryanwang/Library/Application Support/Coursier/bin"
+export PATH="$PATH:/Users/ryanwang/flyway-7.11.0"
+export PATH="$PATH:$HOME/.spawnctl/bin"
+export GO111MODULE="on"
+export PATH="$PATH":"$HOME/.pub-cache/bin"
+
+
 
 
 export PATH="$HOME/flutter/bin:$PATH"
@@ -21,15 +30,16 @@ export FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn
 alias kcd="kubectl config set-context (kubectl config current-context) --namespace"
 alias k=kubectl
 
+
 function java_use
     export JAVA_HOME=(/usr/libexec/java_home -v $argv[1])
     export PATH="$JAVA_HOME/bin:$PATH"
     java -version
 end
 
-
-
-
+#export LIBRARY_PATH="$LIBRARY_PATH:/usr/local/opt/openssl/lib/"
+export LDFLAGS="-L/usr/local/opt/zlib/lib"
+export CPPFLAGS="-I/usr/local/opt/zlib/include"
 
 export PATH="$HOME/.pyenv/shims:$PATH"
 
@@ -40,10 +50,10 @@ alias uq="set -e http_proxy; set -e https_proy"
 
 export PATH="/usr/local/sbin:$PATH"
 
-export PATH="/usr/local/opt/ruby/bin:$PATH"
-status --is-interactive; and source (rbenv init -|psub)
 
 export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
+export PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH"
+
 
 
 
@@ -79,11 +89,11 @@ alias gstash="git stash --include-untracked"
 alias gapply="git stash apply"
 
 
-alias ggrep="git grep"
+#alias ggrep="git grep"
 alias ws="yarn workspace"
 
-alias l='ls | lolcat'
-alias la='ls -la | lolcat'
+#alias l='ls | lolcat'
+#alias la='ls -la | lolcat'
 
 alias gi='git add -A && git commit -m'
 alias gp='git push'
@@ -102,17 +112,14 @@ export PATH="$PATH":"$ANDROID_HOME"/tools/bin
 export PATH="$PATH":"$ANDROID_HOME"/platform-tools
 export PATH="$HOME/.cargo/bin:$PATH"
 
-export JAVA_HOME=(/usr/libexec/java_home -v 1.8)
-export PATH="$JAVA_HOME"/bin:"$PATH"
+export JAVA_HOME=(/usr/libexec/java_home -v 11)
+#export PATH="$JAVA_HOME"/bin:"$PATH"
 
 
 alias ggpush="git push origin HEAD"
 
 export CLICOLOR=1
 export LSCOLORS=gx
-
-alias l='ls | lolcat'
-alias la='ls -la | lolcat'
 
 
 function kmypy
@@ -141,8 +148,11 @@ set -gx PATH "$VOLTA_HOME/bin" $PATH
 
 pyenv init - | source
 
+fzf_key_bindings
+
 if test (uname) = Darwin
     function __fish_describe_command; end
 else
    # Use the actual function
 end
+

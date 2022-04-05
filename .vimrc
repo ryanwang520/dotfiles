@@ -236,7 +236,7 @@ let g:syntastic_python_checkers=['python']
 
 " for syntastic warning shows
 set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
