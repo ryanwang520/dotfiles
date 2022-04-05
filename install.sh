@@ -1,6 +1,6 @@
 #/bin/sh
 
-folders=( fish tmux vim)
+folders=( fish tmux vim bin)
 
 for folder in "${folders[@]}"
 do
