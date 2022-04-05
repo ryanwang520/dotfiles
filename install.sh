@@ -4,6 +4,6 @@ folders=( fish tmux vim)
 
 for folder in "${folders[@]}"
 do
-    stow -D $folder
-    stow $folder
+    stow -t $HOME -D $folder
+    stow -t $HOME $folder
 done

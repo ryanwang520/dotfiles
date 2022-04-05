@@ -1,7 +1,6 @@
 starship init fish | source
 
 alias rm=trash
-alias ls=exa
 alias cat='bat --paging=never'
 
 export EDITOR=vim
