@@ -1,6 +1,5 @@
 starship init fish | source
 
-#alias j=z
 alias rm=trash
 alias ls=exa
 alias cat='bat --paging=never'
@@ -25,7 +24,6 @@ export PATH="$PATH":"$HOME/.pub-cache/bin"
 export PATH="$HOME/flutter/bin:$PATH"
 export PUB_HOSTED_URL=https://pub.flutter-io.cn
 export FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn
-## export JAVA_OPTS='-XX:+IgnoreUnrecognizedVMOptions --add-modules java.se.ee'
 
 alias kcd="kubectl config set-context (kubectl config current-context) --namespace"
 alias k=kubectl
@@ -33,11 +31,9 @@ alias k=kubectl
 
 function java_use
     export JAVA_HOME=(/usr/libexec/java_home -v $argv[1])
-    export PATH="$JAVA_HOME/bin:$PATH"
     java -version
 end
 
-#export LIBRARY_PATH="$LIBRARY_PATH:/usr/local/opt/openssl/lib/"
 export LDFLAGS="-L/usr/local/opt/zlib/lib"
 export CPPFLAGS="-I/usr/local/opt/zlib/include"
 
@@ -89,11 +85,8 @@ alias gstash="git stash --include-untracked"
 alias gapply="git stash apply"
 
 
-#alias ggrep="git grep"
 alias ws="yarn workspace"
 
-#alias l='ls | lolcat'
-#alias la='ls -la | lolcat'
 
 alias gi='git add -A && git commit -m'
 alias gp='git push'
@@ -112,8 +105,9 @@ export PATH="$PATH":"$ANDROID_HOME"/tools/bin
 export PATH="$PATH":"$ANDROID_HOME"/platform-tools
 export PATH="$HOME/.cargo/bin:$PATH"
 
+
+
 export JAVA_HOME=(/usr/libexec/java_home -v 11)
-#export PATH="$JAVA_HOME"/bin:"$PATH"
 
 
 alias ggpush="git push origin HEAD"
