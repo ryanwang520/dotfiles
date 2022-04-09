@@ -140,8 +140,8 @@ let NERDTreeIgnore = ['\.pyc$', '\.egg-info$', 'venv$', '\.idea$', '\.eggs$', '.
 "重载.vimrc文件
 :nnoremap <leader>sv :source $MYVIMRC<cr>
 :iabbrev @@    hwwangwang@gmail.com
-:iabbrev ccopy Copyright 2014 Vita John, all rights reserved.
-:iabbrev ssig -- <cr>Vita John<cr>hwwangwang@gmail.com
+:iabbrev ccopy Copyright 2014 Ryan Wang, all rights reserved.
+:iabbrev ssig -- <cr>Ryan Wang<cr>hwwangwang@gmail.com
 :nnoremap <leader>" viw<esc>a"<esc>hbi"<esc>lel
 :nnoremap <leader>' viw<esc>a'<esc>hbi'<esc>lel
 "在选中区域两边添加"
