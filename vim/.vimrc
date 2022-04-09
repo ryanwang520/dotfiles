@@ -160,41 +160,14 @@ map <leader>p :CtrlP<cr>
 map <leader>m :CtrlPMRU<cr>
 map <leader>d :CtrlPBufTagAll<cr>
 
-"map <leader>t :FufTag<cr>
-
 nnoremap <leader>pr :execute "rightbelow vsplit " . bufname("#")<cr>
 nnoremap <leader>pl :execute "leftabove vsplit " . bufname("#")<cr>
 
 
-" inoremap <esc> <nop>
-augroup filetype_html
-autocmd!
-autocmd FileType html nnoremap <buffer> <localleader>f Vatzf
-augroup END
-
-augroup filetype_python
-autocmd!
-autocmd FileType python     :iabbrev <buffer> re  return<left>
-augroup END
-
-augroup filetype_markdown
-autocmd!
-autocmd FileType markdown :onoremap ih :<c-u>execute "normal! ?^\\(==\\\\|--\\)\\+\r:nohlsearch\rkvg_"<cr>
-:onoremap ah :<c-u>execute "normal! ?^==\\+$\r:nohlsearch\rg_vk0"<cr>
-augroup END
-" Vimscript file settings ---------------------- {{{
-" augroup filetype_vim
-" autocmd!
-" autocmd FileType vim setlocal foldmethod=marker
-" augroup END
-" }}}
-
-
-":nnoremap <leader>grep :silent execute "grep! -R " . shellescape(expand("<cWORD>")) . " ."<cr>:copen<cr>
-
 :nnoremap <leader>N :setlocal number!<cr>
 
-" nnoremap <Space> za
+" 缩进
+:nnoremap <Space> za
 
 " au BufRead * normal zM
 
@@ -227,32 +200,9 @@ nmap <leader>rr :!<Up><cr>
 inoremap <leader>w  <esc>:w<cr>a
 nnoremap <leader>w  :w<cr>
 
-
-" flake8 checker too slow
-"let g:syntastic_python_checkers=['python', 'flake8']
-"let g:syntastic_python_checkers=['python', 'pycodestyle']
-let g:syntastic_python_checkers=['python']
-
-
-" for syntastic warning shows
-set statusline+=%#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 2
-"let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
 nmap <leader>A :tab split<cr>:Ack ""<Left>
 
 nmap <leader>a :tab split<cr>:Ack <C-r><C-w><cr>
-
-" Trigger configuration. Do not use <tab> if you use
-" https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
@@ -279,22 +229,11 @@ augroup end
 augroup py
     autocmd FileType python setlocal tabstop=4   softtabstop=4 shiftwidth=4 smarttab expandtab foldmethod=indent colorcolumn=100
     autocmd FileType python nmap <leader>r :w<cr>:!python3  %:p<cr>
-    "autocmd BufWritePost *.py :silent !autopep8 --in-place %:p
     autocmd BufWritePost *.py :set autoread
 augroup end
 
 
 autocmd BufWritePre *.py :%s/\s\+$//e
-
-augroup scala
-        "解决scala和syntax插件冲突的问题
-    autocmd FileType scala let g:syntastic_check_on_open = 0
-augroup end
-
-augroup rb
-    autocmd FileType ruby setlocal tabstop=2 softtabstop=2 shiftwidth=2 smarttab expandtab foldmethod=indent
-    autocmd FileType ruvy nmap <leader>r :w<cr>:!ruby %:p<cr>
-augroup end
 
 augroup js
     autocmd FileType javascript setlocal expandtab shiftwidth=2 shiftround tabstop=2
@@ -309,29 +248,10 @@ augroup go
     autocmd BufWritePre *.go GoFmt
 augroup end
 
-" 随 vim 自启动
-let g:indent_guides_enable_on_vim_startup=1
-" " 从第二层开始可视化显示缩进
- let g:indent_guides_start_level=2
-" " 色块宽度
- let g:indent_guides_guide_size=1
-" " 快捷键 i 开/关缩进可视化
- :nmap <silent> <Leader>i <Plug>IndentGuidesToggle
 
- let g:Powerline_symbols = 'fancy'
+let g:Powerline_symbols = 'fancy'
 
 set rtp+=/usr/local/opt/fzf
 
 map <leader>f :FZF<CR>
-
-let g:syntastic_python_python_exec = '/usr/local/bin/python3'
-
-" 普通的太傻逼, ESLINT又太慢, 不要检查了, 看得烦躁
-let g:syntastic_html_checkers = []
-let g:syntastic_javascript_checkers = []
-" let g:rustfmt_autosave = 1
-"
-"
-let g:javascript_plugin_flow = 1
-
 
