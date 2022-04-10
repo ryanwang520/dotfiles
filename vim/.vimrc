@@ -58,10 +58,6 @@ nnoremap <Up> gk
 vnoremap <Down> gj
 vnoremap <Up> gk
 
-" Ack on <leader>a
-nnoremap <leader>a :Ack
-nnoremap <leader>A :AckFromSearch<CR>
-
 " Quit window on <leader>q
 nnoremap <leader>q :q<CR>
 nnoremap <leader>qa :qa<CR>
