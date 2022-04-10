@@ -180,9 +180,6 @@ nnoremap <leader>pl :execute "leftabove vsplit " . bufname("#")<cr>
 " Easy motion
 let g:EasyMotion_do_mapping = 0 " Disable default mappings
 
-" map <leader>s <Plug>(easymotion-s2)
-nmap <leader>s :w<cr>
-
 " Turn on case sensitive feature
 let g:EasyMotion_smartcase = 1
 
@@ -210,9 +207,6 @@ nmap <leader>A :tab split<cr>:Ack ""<Left>
 
 nmap <leader>a :tab split<cr>:Ack <C-r><C-w><cr>
 
-" If you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit="vertical"
-
 "go
 let g:go_fmt_command = "goimports"
 let g:go_fmt_autosave = 0
@@ -224,11 +218,10 @@ let g:go_highlight_methods = 1
 let g:go_highlight_structs = 1
 
 
+"rust
+let g:rustfmt_autosave = 1
 augroup rust
-    autocmd FileType rust setlocal completeopt-=preview
     autocmd FileType rust nnoremap <leader>b :w<cr>:!cargo build<CR>
-    autocmd FileType rust nnoremap <localleader>c :w<cr>:!clear<cr>:!rustc %:p<CR>
-    autocmd FileType rust noremap <localleader>r :w<cr>:exe "!". expand("%:p")[0:-4]<cr>
     autocmd FileType rust nnoremap <leader>r :w<cr>:!cargo run<cr>
 augroup end
 
@@ -256,8 +249,6 @@ augroup end
 
 
 let g:Powerline_symbols = 'fancy'
-
-set rtp+=/usr/local/opt/fzf
 
 map <leader>f :FZF<CR>
 
