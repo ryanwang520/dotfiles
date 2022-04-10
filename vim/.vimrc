@@ -1,8 +1,11 @@
 set encoding=utf-8 nobomb " BOM often causes trouble
 
+
 filetype off
 execute pathogen#infect()
 call pathogen#helptags()
+
+
 
 :let mapleader = ","
 :let maplocalleader = "."
@@ -17,6 +20,9 @@ set expandtab
 
 set tabstop=4
 
+set scrolloff=8
+
+
 set nocompatible
 set incsearch
 nnoremap <leader>l :set nohlsearch!<cr>
@@ -30,7 +36,6 @@ let g:rehash256 = 1
 let g:UltiSnipsUsePythonVersion = 3
 
 
-let g:airline#extensions#tabline#enabled = 1
 
 if (has("termguicolors"))
  set termguicolors
@@ -91,7 +96,8 @@ endif
 
 set laststatus=2 " Always show statusline
 let g:airline_powerline_fonts = 1
-let g:airline_theme='powerlineish'
+let g:airline_theme='night_owl'
+let g:airline#extensions#tabline#enabled = 1
 
 nmap <F8> :TagbarToggle<CR>
 nmap <leader>t  :TagbarToggle<CR>
