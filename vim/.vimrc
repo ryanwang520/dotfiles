@@ -218,7 +218,10 @@ let g:go_highlight_structs = 1
 let g:rustfmt_autosave = 1
 augroup rust
     autocmd FileType rust nnoremap <leader>b :w<cr>:!cargo build<CR>
+    autocmd FileType rust inoremap <leader>b <esc>:w<cr>:!cargo build<CR>
     autocmd FileType rust nnoremap <leader>r :w<cr>:!cargo run<cr>
+    autocmd FileType rust inoremap <leader>r <esc>:w<cr>:!cargo run<cr>
+
 augroup end
 
 augroup py

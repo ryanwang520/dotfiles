@@ -26,6 +26,7 @@ export FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn
 
 alias kcd="kubectl config set-context (kubectl config current-context) --namespace"
 alias k=kubectl
+alias gist="gh gist create"
 
 
 function java_use
