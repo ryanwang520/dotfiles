@@ -251,3 +251,6 @@ let g:Powerline_symbols = 'fancy'
 
 map <leader>f :FZF<CR>
 
+
+let g:UltiSnipsExpandTrigger="<tab>"
+
