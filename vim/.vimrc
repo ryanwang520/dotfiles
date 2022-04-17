@@ -81,6 +81,7 @@ let g:airline#extensions#tabline#enabled = 1
 
 nmap <F8> :TagbarToggle<CR>
 nmap <leader>t  :TagbarToggle<CR>
+nmap <leader>n  :tabnew<CR>
 
 
 "当前目录下生成ctags标签文件
