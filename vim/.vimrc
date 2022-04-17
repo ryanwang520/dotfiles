@@ -28,9 +28,6 @@ set incsearch
 nnoremap <leader>l :set nohlsearch!<cr>
 nnoremap <leader>v :tabclose<cr>
 
-let g:user_emmet_install_global = 0
-autocmd FileType html,css EmmetInstall
-
 
 let g:rehash256 = 1
 let g:UltiSnipsUsePythonVersion = 3
@@ -40,9 +37,8 @@ let g:UltiSnipsUsePythonVersion = 3
 if (has("termguicolors"))
  set termguicolors
 endif
-colorscheme onedark
+colorscheme nord
 
-let g:onedark_terminal_italics=1
 
 
 
@@ -92,14 +88,14 @@ endif
 
 set laststatus=2 " Always show statusline
 let g:airline_powerline_fonts = 1
-let g:airline_theme='night_owl'
+let g:airline_theme='nord'
 let g:airline#extensions#tabline#enabled = 1
 
 nmap <F8> :TagbarToggle<CR>
 nmap <leader>t  :TagbarToggle<CR>
 
-autocmd vimenter * if !argc() | NERDTree | endif
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+"autocmd vimenter * if !argc() | NERDTree | endif
+"autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 
 "当前目录下生成ctags标签文件
@@ -213,6 +209,9 @@ let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
 let g:go_highlight_structs = 1
 
+:set colorcolumn=80
+
+
 
 "rust
 let g:rustfmt_autosave = 1
@@ -225,7 +224,7 @@ augroup rust
 augroup end
 
 augroup py
-    autocmd FileType python setlocal tabstop=4   softtabstop=4 shiftwidth=4 smarttab expandtab foldmethod=indent colorcolumn=100
+    autocmd FileType python setlocal tabstop=4   softtabstop=4 shiftwidth=4 smarttab expandtab foldmethod=indent colorcolumn=88
     autocmd FileType python nmap <leader>r :w<cr>:!python3  %:p<cr>
     autocmd BufWritePost *.py :set autoread
 augroup end
@@ -243,13 +242,14 @@ augroup end
 
 augroup go
     autocmd FileType go nmap <leader>r :w<cr>:!go run %:p<cr>
+    autocmd FileType go imap <leader>r <esc>:w<cr>:!go run %:p<cr>
     autocmd BufWritePre *.go GoFmt
 augroup end
 
 
 let g:Powerline_symbols = 'fancy'
 
-map <leader>f :FZF<CR>
+map <leader>f :GFiles<CR>
 
 
 let g:UltiSnipsExpandTrigger="<tab>"
