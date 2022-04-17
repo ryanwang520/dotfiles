@@ -1,11 +1,8 @@
 set encoding=utf-8 nobomb " BOM often causes trouble
 
-
 filetype off
 execute pathogen#infect()
 call pathogen#helptags()
-
-
 
 :let mapleader = ","
 :let maplocalleader = "."
@@ -22,24 +19,19 @@ set tabstop=4
 
 set scrolloff=8
 
-
 set nocompatible
 set incsearch
 nnoremap <leader>l :set nohlsearch!<cr>
 nnoremap <leader>v :tabclose<cr>
 
-
 let g:rehash256 = 1
 let g:UltiSnipsUsePythonVersion = 3
-
 
 
 if (has("termguicolors"))
  set termguicolors
 endif
 colorscheme nord
-
-
 
 
 "默认syntax折叠
@@ -60,7 +52,6 @@ nnoremap <leader>qa :qa<CR>
 
 
 set nrformats= "ctrl a 或x在0开头数字上操作不采用八进制
-"set foldcolumn=4 "" 左边显示fold， +表示一个fold， - 表示打开的fold开始， |表示fold内容
 set foldlevel=999   "大于指定数量的shiftwidth的都会被fold
 set backspace=2 "解决按下a进入insert模式不能使用delete键的问题
 set cursorline " Highlight current line
@@ -83,9 +74,6 @@ if $TMUX != ""
 endif
 
 
-"runtime macros/matchit.vim
-"cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
-
 set laststatus=2 " Always show statusline
 let g:airline_powerline_fonts = 1
 let g:airline_theme='nord'
@@ -94,18 +82,9 @@ let g:airline#extensions#tabline#enabled = 1
 nmap <F8> :TagbarToggle<CR>
 nmap <leader>t  :TagbarToggle<CR>
 
-"autocmd vimenter * if !argc() | NERDTree | endif
-"autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
 
 "当前目录下生成ctags标签文件
 :nnoremap <f6> :!ctags -R<CR>
-"是否每次自动生成标签，默认关闭好了
-" :autocmd BufWritePost * call system("ctags -R")
-"
-"
-"不显示doc string
-" autocmd FileType python setlocal completeopt-=preview
 
 let g:NERDTreeShowHidden=1
 let g:NERDTreeHighlightCursorline=0
@@ -116,20 +95,15 @@ set fillchars=
 "不显示文件结束后各行的波浪号
 :hi EndOfBuffer ctermfg=237
 
-
-
 map <F2> :NERDTreeToggle <cr>
 
 :set noswapfile
 
-" set guifont=consolas:h20
-" set lines=100 columns=200
-"
- "nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
+
 set hlsearch
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 let NERDTreeIgnore = ['\.pyc$', '\.egg-info$', 'venv$', '\.idea$', '\.eggs$', '.pytest_cache$', '\.git$', '__pycache__$']
-:noremap <leader>- dd p
+:noremap <leader>- ddp
 :noremap <leader>_ ddkP
 :inoremap <leader><c-d> <esc>ddi
 :inoremap <leader><c-u> <esc>viwU
@@ -145,8 +119,6 @@ let NERDTreeIgnore = ['\.pyc$', '\.egg-info$', 'venv$', '\.idea$', '\.eggs$', '.
 "在选中区域两边添加"
 :vnoremap <leader>"" <esc>`>a"<esc>`<i"<esc>
 :inoremap jk <esc>
-
-"nnoremap <F3> :GundoToggle<CR>
 
 "bind movements keys between windows
 map <c-j> <c-w>j
@@ -195,10 +167,6 @@ nmap <leader>rr :!<Up><cr>
 inoremap <leader>w  <esc>:w<cr>a
 nnoremap <leader>w  :w<cr>
 
-nmap <leader>A :tab split<cr>:Ack ""<Left>
-
-nmap <leader>a :tab split<cr>:Ack <C-r><C-w><cr>
-
 "go
 let g:go_fmt_command = "goimports"
 let g:go_fmt_autosave = 0
@@ -210,8 +178,6 @@ let g:go_highlight_methods = 1
 let g:go_highlight_structs = 1
 
 :set colorcolumn=80
-
-
 
 "rust
 let g:rustfmt_autosave = 1
