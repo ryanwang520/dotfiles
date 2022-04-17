@@ -19,6 +19,7 @@ set tabstop=4
 
 set scrolloff=8
 
+
 set nocompatible
 set incsearch
 nnoremap <leader>l :set nohlsearch!<cr>
@@ -77,7 +78,16 @@ endif
 set laststatus=2 " Always show statusline
 let g:airline_powerline_fonts = 1
 let g:airline_theme='nord'
-let g:airline#extensions#tabline#enabled = 1
+
+
+" ale
+let g:airline#extensions#ale#enabled = 1
+
+" prettier
+let g:prettier#autoformat = 1
+let g:prettier#autoformat_require_pragma = 0
+let g:prettier#exec_cmd_async = 1
+
 
 nmap <F8> :TagbarToggle<CR>
 nmap <leader>t  :TagbarToggle<CR>
