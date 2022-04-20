@@ -137,7 +137,7 @@ map <c-k> <c-w>k
 map <c-l> <c-w>l
 map <c-h> <c-w>h
 
-map <leader>p :CtrlP<cr>
+map <leader>p :Files<cr>
 map <leader>m :CtrlPMRU<cr>
 map <leader>d :CtrlPBufTagAll<cr>
 
@@ -227,6 +227,10 @@ augroup end
 let g:Powerline_symbols = 'fancy'
 
 map <leader>f :GFiles<CR>
+map <leader>g :GFiles?<CR>
+map <leader>z :cprev<CR>
+map <leader>y :cnext<CR>
+map <leader>o :copen<CR>
 
 
 let g:UltiSnipsExpandTrigger="<tab>"
