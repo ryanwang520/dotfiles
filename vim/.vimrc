@@ -62,6 +62,21 @@ set cursorline " Highlight current line
 "高亮当前行
 hi CursorLine cterm=NONE ctermbg=237
 
+
+" cursor变细
+if $TERM_PROGRAM =~ "iTerm"
+  let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+  let &t_SR = "\<Esc>]50;CursorShape=2\x7"
+  let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+endif
+
+if $TMUX != ""
+  let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+  let &t_SR = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=2\x7\<Esc>\\"
+  let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+endif
+
+
 set laststatus=2 " Always show statusline
 let g:airline_powerline_fonts = 1
 let g:airline_theme='nord'
