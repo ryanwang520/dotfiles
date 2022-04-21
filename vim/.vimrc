@@ -18,7 +18,7 @@ set expandtab
 set tabstop=4
 
 set scrolloff=8
-
+set autoread
 
 set nocompatible
 set incsearch
@@ -208,7 +208,6 @@ augroup end
 augroup py
     autocmd FileType python setlocal tabstop=4   softtabstop=4 shiftwidth=4 smarttab expandtab foldmethod=indent colorcolumn=88
     autocmd FileType python nmap <leader>r :w<cr>:!python3  %:p<cr>
-    autocmd BufWritePost *.py :set autoread
 augroup end
 
 
