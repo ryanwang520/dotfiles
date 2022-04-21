@@ -141,7 +141,10 @@ map <c-h> <c-w>h
 
 map <leader>p :Files<cr>
 map <leader>m :CtrlPMRU<cr>
-map <leader>d :CtrlPBufTagAll<cr>
+nnoremap <leader>d :CtrlPBufTagAll<cr>
+
+vnoremap <leader>P "_dP<cr>
+nnoremap <leader>Y gg"+yG<cr>
 
 nnoremap <leader>pr :execute "rightbelow vsplit " . bufname("#")<cr>
 nnoremap <leader>pl :execute "leftabove vsplit " . bufname("#")<cr>
