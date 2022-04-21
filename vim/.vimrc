@@ -25,6 +25,8 @@ set incsearch
 nnoremap <leader>l :set nohlsearch!<cr>
 nnoremap <leader>v :tabclose<cr>
 
+nnoremap <leader>e :Vex<cr>
+
 let g:rehash256 = 1
 let g:UltiSnipsUsePythonVersion = 3
 
