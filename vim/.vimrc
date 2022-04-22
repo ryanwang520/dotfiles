@@ -108,7 +108,7 @@ set fillchars=
 "不显示文件结束后各行的波浪号
 :hi EndOfBuffer ctermfg=237
 
-map <F2> :NERDTreeToggle <cr>
+noremap <F2> :NERDTreeToggle <cr>
 
 :set noswapfile
 
@@ -134,13 +134,13 @@ let NERDTreeIgnore = ['\.pyc$', '\.egg-info$', 'venv$', '\.idea$', '\.eggs$', '.
 :inoremap jk <esc>
 
 "bind movements keys between windows
-map <c-j> <c-w>j
-map <c-k> <c-w>k
-map <c-l> <c-w>l
-map <c-h> <c-w>h
+noremap <c-j> <c-w>j
+noremap <c-k> <c-w>k
+noremap <c-l> <c-w>l
+noremap <c-h> <c-w>h
 
-map <leader>p :Files<cr>
-map <leader>m :CtrlPMRU<cr>
+noremap <leader>p :Files<cr>
+noremap <leader>m :CtrlPMRU<cr>
 nnoremap <leader>d :CtrlPBufTagAll<cr>
 
 vnoremap <leader>P "_dP<cr>
@@ -164,8 +164,8 @@ let g:EasyMotion_do_mapping = 0 " Disable default mappings
 let g:EasyMotion_smartcase = 1
 
 " JK motions: Line motions
-map <Leader>j <Plug>(easymotion-j)
-map <Leader>k <Plug>(easymotion-k)
+noremap <Leader>j <Plug>(easymotion-j)
+noremap <Leader>k <Plug>(easymotion-k)
 
 
 autocmd FileType c  nmap <leader>b :w<cr>:!gcc %:p<cr>
@@ -230,11 +230,11 @@ augroup end
 
 let g:Powerline_symbols = 'fancy'
 
-map <leader>f :GFiles<CR>
-map <leader>g :GFiles?<CR>
-map <leader>z :cprev<CR>
-map <leader>y :cnext<CR>
-map <leader>o :copen<CR>
+noremap <leader>f :GFiles<CR>
+noremap <leader>g :GFiles?<CR>
+noremap <leader>z :cprev<CR>
+noremap <leader>y :cnext<CR>
+noremap <leader>o :copen<CR>
 
 
 let g:UltiSnipsExpandTrigger="<tab>"
