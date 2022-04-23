@@ -157,15 +157,8 @@ nnoremap <leader>pl :execute "leftabove vsplit " . bufname("#")<cr>
 
 " au BufRead * normal zM
 
-" Easy motion
-let g:EasyMotion_do_mapping = 0 " Disable default mappings
 
-" Turn on case sensitive feature
-let g:EasyMotion_smartcase = 1
 
-" JK motions: Line motions
-noremap <Leader>j <Plug>(easymotion-j)
-noremap <Leader>k <Plug>(easymotion-k)
 
 
 autocmd FileType c  nmap <leader>b :w<cr>:!gcc %:p<cr>
@@ -232,8 +225,8 @@ let g:Powerline_symbols = 'fancy'
 
 noremap <leader>f :GFiles<CR>
 noremap <leader>g :GFiles?<CR>
-noremap <leader>z :cprev<CR>
-noremap <leader>y :cnext<CR>
+noremap <leader>j :cprev<CR>
+noremap <leader>k :cnext<CR>
 noremap <leader>o :copen<CR>
 
 
