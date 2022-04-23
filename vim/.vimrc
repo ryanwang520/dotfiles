@@ -109,6 +109,7 @@ set fillchars=
 :hi EndOfBuffer ctermfg=237
 
 noremap <F2> :NERDTreeToggle <cr>
+noremap <leader><space> :NERDTreeToggle <cr>
 
 :set noswapfile
 
