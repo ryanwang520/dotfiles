@@ -117,7 +117,6 @@ noremap <leader><space> :NERDTreeToggle <cr>
 set hlsearch
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 let NERDTreeIgnore = ['\.pyc$', '\.egg-info$', 'venv$', '\.idea$', '\.eggs$', '.pytest_cache$', '\.git$', '__pycache__$']
-:noremap <leader>- ddp
 :noremap <leader>_ ddkP
 :inoremap <leader><c-d> <esc>ddi
 :inoremap <leader><c-u> <esc>viwU
@@ -135,10 +134,10 @@ let NERDTreeIgnore = ['\.pyc$', '\.egg-info$', 'venv$', '\.idea$', '\.eggs$', '.
 :inoremap jk <esc>
 
 "bind movements keys between windows
-noremap <c-j> <c-w>j
-noremap <c-k> <c-w>k
-noremap <c-l> <c-w>l
-noremap <c-h> <c-w>h
+"noremap <c-j> <c-w>j
+"noremap <c-k> <c-w>k
+"noremap <c-l> <c-w>l
+"noremap <c-h> <c-w>h
 
 noremap <leader>p :Files<cr>
 noremap <leader>m :CtrlPMRU<cr>
@@ -228,8 +227,13 @@ noremap <leader>f :GFiles<CR>
 noremap <leader>g :GFiles?<CR>
 noremap <leader>j :cprev<CR>
 noremap <leader>k :cnext<CR>
-noremap <leader>o :copen<CR>
 
 
 let g:UltiSnipsExpandTrigger="<tab>"
 
+" automatically rebalance windows on vim resize
+autocmd VimResized * :wincmd =
+
+" zoom a vim pane, <C-w>= to re-balance
+nnoremap <leader>- :wincmd _<cr>:wincmd \|<cr>
+nnoremap <leader>= :wincmd =<cr>
