@@ -1,5 +1,3 @@
-starship init fish | source
-
 alias rm=trash
 alias cat='bat --paging=never'
 
@@ -147,3 +145,11 @@ else
    # Use the actual function
 end
 
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/ryanwang/Downloads/google-cloud-sdk/path.fish.inc' ]; . '/Users/ryanwang/Downloads/google-cloud-sdk/path.fish.inc'; end
+
+source /Users/ryanwang/.docker/init-fish.sh || true # Added by Docker Desktop
+
+
+starship init fish | source

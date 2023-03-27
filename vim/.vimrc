@@ -123,7 +123,7 @@ noremap <leader><space> :NERDTreeToggle <cr>
 
 set hlsearch
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
-let NERDTreeIgnore = ['\.pyc$', '\.egg-info$', 'venv$', '\.idea$', '\.eggs$', '.pytest_cache$', '\.git$', '__pycache__$']
+let NERDTreeIgnore = ['\.pyc$', '\.egg-info$', 'venv$', '\.idea$', '\.eggs$', '.pytest_cache$', '__pycache__$']
 :noremap <leader>_ ddkP
 :inoremap <leader><c-d> <esc>ddi
 :inoremap <leader><c-u> <esc>viwU
