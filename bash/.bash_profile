@@ -1,6 +1,8 @@
 alias qj="export https_proxy=http://127.0.0.1:6152;export http_proxy=http://127.0.0.1:6152"
 
-PATH=~/.volta/bin:~/.local/bin:~/flutter/bin:~/.pyenv/shims:$PATH
+alias uq="unset http_proxy; unset https_proxy"
+
+PATH=~/bin:~/.volta/bin:~/.local/bin:~/flutter/bin:~/.pyenv/shims:$PATH
 
 alias brew_bump="brew doctor; brew update; brew upgrade"
 
