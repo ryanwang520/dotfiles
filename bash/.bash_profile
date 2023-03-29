@@ -28,4 +28,9 @@ rb() {
   rebase_upstream master
 }
 
+eval "$(github-copilot-cli alias -- "$0")"
 
+
+alias gq="git?"
+alias qq="??"
+alias ghq="gh?"
