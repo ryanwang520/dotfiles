@@ -19,8 +19,9 @@ export PATH="$PATH":"$HOME/.pub-cache/bin"
 
 
 export PATH="$HOME/flutter/bin:$PATH"
-export PUB_HOSTED_URL=https://pub.flutter-io.cn
-export FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn
+export NO_PROXY=localhost,127.0.0.1,::1
+#export PUB_HOSTED_URL=https://pub.flutter-io.cn
+#export FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn
 
 alias kcd="kubectl config set-context (kubectl config current-context) --namespace"
 alias k=kubectl
@@ -32,8 +33,6 @@ function java_use
     java -version
 end
 
-export LDFLAGS="-L/usr/local/opt/zlib/lib"
-export CPPFLAGS="-I/usr/local/opt/zlib/include"
 
 export PATH="$HOME/.pyenv/shims:$PATH"
 
@@ -105,7 +104,7 @@ export PATH="$HOME/.cargo/bin:$PATH"
 
 
 
-export JAVA_HOME=(/usr/libexec/java_home -v 11)
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/zulu-11.jdk/Contents/Home
 
 
 alias ggpush="git push origin HEAD"
@@ -153,3 +152,7 @@ source /Users/ryanwang/.docker/init-fish.sh || true # Added by Docker Desktop
 
 
 starship init fish | source
+
+
+#export FLUTTER_ROOT=/Users/ryanwang/flutter
+#export NDK_ROOT=$HOME/Library/Android/sdk/ndk/25.1.8937393
