@@ -17,7 +17,7 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
         "nvim-tree/nvim-tree.lua",
         "nvim-tree/nvim-web-devicons",
-        "shaunsingh/nord.nvim",
+        "navarasu/onedark.nvim",
         {
     'nvim-telescope/telescope.nvim', tag = '0.1.2',
           dependencies = { 'nvim-lua/plenary.nvim' },
@@ -51,13 +51,17 @@ require("nvim-tree").setup({
   },
 })
 
+require('onedark').setup {
+    style = 'cool'
+}
 
-vim.cmd[[colorscheme nord]]
+require('onedark').load()
 
 
 require('lualine').setup {
   options = {
-    theme = 'nord'
+              theme = 'onedark'
+
   }
 }
 
