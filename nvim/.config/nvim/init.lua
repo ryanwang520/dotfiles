@@ -24,10 +24,17 @@ require("lazy").setup({
 	{"nvim-treesitter/nvim-treesitter", build = ":TSUpdate"},
 	"nvim-lua/plenary.nvim",
 	'nvim-lualine/lualine.nvim',
-        'tpope/vim-fugitive'
+        'tpope/vim-fugitive',
+        'lukas-reineke/indent-blankline.nvim',
   }
 })
 
+
+require("indent_blankline").setup {
+    -- for example, context is off by default, use this to turn it on
+    show_current_context = true,
+    show_current_context_start = true,
+}
 
 
 -- set termguicolors to enable highlight groups
@@ -70,6 +77,10 @@ vim.opt.expandtab = true
 vim.opt.number = true
 vim.opt.swapfile = false
 
+vim.api.nvim_set_keymap('n', '<leader>l', ':set nohlsearch!<CR>', { noremap = true, silent = true })
+
+vim.o.mouse = 'a'
+
 
 vim.api.nvim_set_keymap('i', 'jk', '<esc>', {noremap = true, silent = true})
 vim.api.nvim_set_keymap('n', '<c-j>', '<c-w>j', {noremap = true, silent = true})
@@ -85,6 +96,8 @@ vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 vim.keymap.set('n', '<C-p>', builtin.git_files, {})
 
+
+
 vim.api.nvim_set_keymap('n', '<leader>t', ':NvimTreeToggle<CR>', {noremap = true, silent = true})
 
 -- Auto open Nvim Tree when nvim is started without arguments
@@ -95,7 +108,7 @@ vim.cmd [[
 
 
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = {"typescript", "tsx", "javascript", "python"},
+  ensure_installed = {"typescript", "tsx", "javascript", "python", "rust", "go"},
   highlight = {
     enable = true,                           
     additional_vim_regex_highlighting = false,
