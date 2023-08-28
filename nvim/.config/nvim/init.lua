@@ -20,14 +20,17 @@ require("lazy").setup({
         "nvim-tree/nvim-tree.lua",
         "nvim-tree/nvim-web-devicons",
         "mhartington/oceanic-next",
-        {'nvim-telescope/telescope.nvim', tag = '0.1.2', dependencies = { 'nvim-lua/plenary.nvim'},
+        {'nvim-telescope/telescope.nvim', tag = '0.1.2', dependencies = { 'nvim-lua/plenary.nvim'}},
 	{"nvim-treesitter/nvim-treesitter", build = ":TSUpdate"},
 	"nvim-lua/plenary.nvim",
 	'nvim-lualine/lualine.nvim',
         'tpope/vim-fugitive',
         'lukas-reineke/indent-blankline.nvim',
-  }
+        {'numToStr/Comment.nvim', lazy = false},
 })
+
+require('Comment').setup()
+
 
 
 require("indent_blankline").setup {
@@ -99,6 +102,8 @@ vim.keymap.set('n', '<C-p>', builtin.git_files, {})
 
 
 vim.api.nvim_set_keymap('n', '<leader>t', ':NvimTreeToggle<CR>', {noremap = true, silent = true})
+
+
 
 -- Auto open Nvim Tree when nvim is started without arguments
 vim.cmd [[
