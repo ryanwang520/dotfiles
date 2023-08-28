@@ -2,6 +2,8 @@
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
+
+
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
@@ -18,14 +20,10 @@ require("lazy").setup({
         "nvim-tree/nvim-tree.lua",
         "nvim-tree/nvim-web-devicons",
         "navarasu/onedark.nvim",
-        {
-    'nvim-telescope/telescope.nvim', tag = '0.1.2',
-          dependencies = { 'nvim-lua/plenary.nvim' },
-          {"nvim-treesitter/nvim-treesitter", build = ":TSUpdate"},
-          "nvim-lua/plenary.nvim",
-            'nvim-lualine/lualine.nvim'
-
-
+        {'nvim-telescope/telescope.nvim', tag = '0.1.2', dependencies = { 'nvim-lua/plenary.nvim'},
+	{"nvim-treesitter/nvim-treesitter", build = ":TSUpdate"},
+	"nvim-lua/plenary.nvim",
+	'nvim-lualine/lualine.nvim'
   }
 })
 
@@ -66,6 +64,10 @@ require('lualine').setup {
 }
 
 
+vim.g.mapleader = ","
+
+vim.opt.expandtab = true
+
 vim.api.nvim_set_keymap('i', 'jk', '<esc>', {noremap = true, silent = true})
 vim.api.nvim_set_keymap('n', '<c-j>', '<c-w>j', {noremap = true, silent = true})
 vim.api.nvim_set_keymap('n', '<c-k>', '<c-w>k', {noremap = true, silent = true})
@@ -73,9 +75,16 @@ vim.api.nvim_set_keymap('n', '<c-l>', '<c-w>l', {noremap = true, silent = true})
 vim.api.nvim_set_keymap('n', '<c-h>', '<c-w>h', {noremap = true, silent = true})
 
 
-
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
 vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
+vim.keymap.set('n', '<C-p>', builtin.git_files, {})
+
+vim.api.nvim_set_keymap('n', '<leader>t', ':NvimTreeToggle<CR>', {noremap = true, silent = true})
+
+-- Auto open Nvim Tree when nvim is started without arguments
+vim.cmd [[
+  autocmd VimEnter * if argc() == 0 | NvimTreeToggle | endif
+]]
