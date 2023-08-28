@@ -131,6 +131,7 @@ alias gpum='git push upstream master'
 alias y="yarn"
 alias ys="yarn start"
 alias yb="yarn build"
+alias vi="nvim"
 set -gx VOLTA_HOME "$HOME/.volta"
 set -gx PATH "$VOLTA_HOME/bin" $PATH
 

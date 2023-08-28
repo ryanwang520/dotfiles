@@ -19,7 +19,7 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
         "nvim-tree/nvim-tree.lua",
         "nvim-tree/nvim-web-devicons",
-        "navarasu/onedark.nvim",
+        "mhartington/oceanic-next",
         {'nvim-telescope/telescope.nvim', tag = '0.1.2', dependencies = { 'nvim-lua/plenary.nvim'},
 	{"nvim-treesitter/nvim-treesitter", build = ":TSUpdate"},
 	"nvim-lua/plenary.nvim",
@@ -45,28 +45,30 @@ require("nvim-tree").setup({
     group_empty = true,
   },
   filters = {
-    dotfiles = true,
+    dotfiles = false,
   },
 })
 
-require('onedark').setup {
-    style = 'cool'
-}
 
-require('onedark').load()
+-- Check and enable termguicolors
+vim.o.termguicolors = true
 
+-- Enable syntax and set colorscheme
+vim.cmd [[syntax enable]]
+vim.cmd [[colorscheme OceanicNext]]
 
 require('lualine').setup {
-  options = {
-              theme = 'onedark'
 
-  }
+        theme = "OceanicNext"
 }
 
 
 vim.g.mapleader = ","
 
 vim.opt.expandtab = true
+vim.opt.number = true
+vim.opt.swapfile = false
+
 
 vim.api.nvim_set_keymap('i', 'jk', '<esc>', {noremap = true, silent = true})
 vim.api.nvim_set_keymap('n', '<c-j>', '<c-w>j', {noremap = true, silent = true})
@@ -88,3 +90,21 @@ vim.api.nvim_set_keymap('n', '<leader>t', ':NvimTreeToggle<CR>', {noremap = true
 vim.cmd [[
   autocmd VimEnter * if argc() == 0 | NvimTreeToggle | endif
 ]]
+
+
+
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = {"typescript", "tsx", "javascript", "python"},
+  highlight = {
+    enable = true,                           
+    additional_vim_regex_highlighting = false,
+  },
+  filetype_specific = {                     
+    tsx = {
+      highlight = {
+        enable = true,
+        additional_vim_regex_highlighting = false,
+      },
+    },
+  },
+}
