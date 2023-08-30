@@ -3,11 +3,13 @@
   "indent-blankline.nvim": { "branch": "master", "commit": "9637670896b68805430e2f72cf5d16be5b97a22a" },
   "lazy.nvim": { "branch": "main", "commit": "2a9354c7d2368d78cbd5575a51a2af5bd8a6ad01" },
   "lualine.nvim": { "branch": "master", "commit": "45e27ca739c7be6c49e5496d14fcf45a303c3a63" },
+  "nightfly": { "branch": "master", "commit": "06eaaaa8717538a7ce96b13c137da8c9eaa84ec8" },
   "nvim-tree.lua": { "branch": "master", "commit": "00741206c2df9c4b538055def19b99790f0c95c8" },
   "nvim-treesitter": { "branch": "master", "commit": "08c830f625eb93db9c89c5e946e8eea7111bd568" },
   "nvim-web-devicons": { "branch": "master", "commit": "cfc8824cc1db316a276b36517f093baccb8e799a" },
-  "oceanic-next": { "branch": "master", "commit": "09833f72d5ba23de2e8bcae18f479f326f5f677a" },
   "plenary.nvim": { "branch": "master", "commit": "0dbe561ae023f02c2fb772b879e905055b939ce3" },
   "telescope.nvim": { "branch": "master", "commit": "207285ccec21b69996a4d3bcfa59df35d48610e8" },
-  "vim-fugitive": { "branch": "master", "commit": "572c8510123cbde02e8a1dafcd376c98e1e13f43" }
+  "vim-fugitive": { "branch": "master", "commit": "572c8510123cbde02e8a1dafcd376c98e1e13f43" },
+  "vim-surround": { "branch": "master", "commit": "3d188ed2113431cf8dac77be61b842acb64433d9" },
+  "vim-tmux-navigator": { "branch": "master", "commit": "addb64a772cb4a3ae1f1363583012b2cada2cd66" }
 }

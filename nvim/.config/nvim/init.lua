@@ -1,37 +1,11 @@
--- disable netrw at the very start of your init.lua
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
 
+require('ryan.plugins-setup')
+require('ryan.core.options')
+require('ryan.core.keymaps')
+require('ryan.core.colorscheme')
 
-
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", -- latest stable release
-    lazypath,
-  })
-end
-vim.opt.rtp:prepend(lazypath)
-require("lazy").setup({
-        "nvim-tree/nvim-tree.lua",
-        "nvim-tree/nvim-web-devicons",
-        "mhartington/oceanic-next",
-        {'nvim-telescope/telescope.nvim', tag = '0.1.2', dependencies = { 'nvim-lua/plenary.nvim'}},
-	{"nvim-treesitter/nvim-treesitter", build = ":TSUpdate"},
-	"nvim-lua/plenary.nvim",
-	'nvim-lualine/lualine.nvim',
-        'tpope/vim-fugitive',
-        'lukas-reineke/indent-blankline.nvim',
-        {'numToStr/Comment.nvim', lazy = false},
-})
-
-require('Comment').setup()
-
-
+require('ryan.plugins.nvim-tree')
+require('ryan.plugins.comment')
 
 require("indent_blankline").setup {
     -- for example, context is off by default, use this to turn it on
@@ -43,8 +17,6 @@ require("indent_blankline").setup {
 -- set termguicolors to enable highlight groups
 vim.opt.termguicolors = true
 
--- empty setup using defaults
-require("nvim-tree").setup()
 
 -- OR setup with some options
 require("nvim-tree").setup({
@@ -61,35 +33,14 @@ require("nvim-tree").setup({
 })
 
 
--- Check and enable termguicolors
-vim.o.termguicolors = true
-
--- Enable syntax and set colorscheme
-vim.cmd [[syntax enable]]
-vim.cmd [[colorscheme OceanicNext]]
-
 require('lualine').setup {
 
-        theme = "OceanicNext"
+        theme = "nightfly"
 }
-
-
-vim.g.mapleader = ","
-
-vim.opt.expandtab = true
-vim.opt.number = true
-vim.opt.swapfile = false
-
-vim.api.nvim_set_keymap('n', '<leader>l', ':set nohlsearch!<CR>', { noremap = true, silent = true })
 
 vim.o.mouse = 'a'
 
 
-vim.api.nvim_set_keymap('i', 'jk', '<esc>', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '<c-j>', '<c-w>j', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '<c-k>', '<c-w>k', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '<c-l>', '<c-w>l', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '<c-h>', '<c-w>h', {noremap = true, silent = true})
 
 
 local builtin = require('telescope.builtin')
@@ -98,11 +49,6 @@ vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
 vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 vim.keymap.set('n', '<C-p>', builtin.git_files, {})
-
-
-
-vim.api.nvim_set_keymap('n', '<leader>t', ':NvimTreeToggle<CR>', {noremap = true, silent = true})
-
 
 
 -- Auto open Nvim Tree when nvim is started without arguments
