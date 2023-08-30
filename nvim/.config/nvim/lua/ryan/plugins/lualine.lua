@@ -1,5 +1,4 @@
+require("lualine").setup({
 
-require('lualine').setup {
-
-        theme = "nightfly"
-}
+	theme = "nightfly",
+})
