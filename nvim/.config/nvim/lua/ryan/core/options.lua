@@ -30,3 +30,4 @@ opt.clipboard:append("unnamedplus")
 
 vim.opt.iskeyword:append("-")
 
+vim.o.mouse = 'a'
