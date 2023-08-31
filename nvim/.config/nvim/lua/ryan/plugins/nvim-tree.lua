@@ -17,6 +17,6 @@ require("nvim-tree").setup({
 })
 
 -- Auto open Nvim Tree when nvim is started without arguments
-vim.cmd([[
-  autocmd VimEnter * if argc() == 0 | NvimTreeToggle | endif
-]])
+-- vim.cmd([[
+--   autocmd VimEnter * if argc() == 0 | NvimTreeToggle | endif
+-- ]])
