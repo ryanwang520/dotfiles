@@ -41,6 +41,8 @@ alias qj="export https_proxy=http://127.0.0.1:6152;export http_proxy=http://127.
 
 alias uq="set -e http_proxy; set -e https_proy"
 
+qj
+
 export PATH="/usr/local/sbin:$PATH"
 
 
