@@ -55,11 +55,11 @@ local servers = {
   clangd = {},
   gopls = {},
   pyright = {},
-  rust_analyzer = {},
-  tsserver = {},
-  emmet_ls = {},
-  html = { filetypes = { 'html', 'twig', 'hbs'} },
-
+  rust_analyzer = {
+    ['rust-analyzer'] = {},
+  },
+  tsserver = {
+  },
   lua_ls = {
     Lua = {
       workspace = { checkThirdParty = false },
