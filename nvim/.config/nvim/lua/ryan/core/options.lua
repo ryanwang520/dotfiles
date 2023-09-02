@@ -29,6 +29,8 @@ vim.wo.signcolumn = 'yes'
 
 -- Decrease update time
 vim.o.updatetime = 250
+
+--- This controls the time (in milliseconds) that NeoVim waits for a mapped key sequence to complete.
 vim.o.timeoutlen = 300
 
 -- Set completeopt to have a better completion experience
