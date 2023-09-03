@@ -55,7 +55,6 @@ local servers = {
   clangd = {},
   gopls = {},
   pyright = {},
-  rust_analyzer = {},
   tsserver = {
   },
   lua_ls = {
@@ -91,3 +90,39 @@ mason_lspconfig.setup_handlers {
     }
   end
 }
+local rt = require("rust-tools")
+
+-- Rust-specific on_attach function
+local function rust_on_attach(client, bufnr)
+  -- Call the common on_attach function first
+  on_attach(client, bufnr)
+
+  -- Then add Rust-specific settings
+  vim.keymap.set("n", "<C-space>", rt.hover_actions.hover_actions, { buffer = bufnr })
+end
+
+-- Update this path
+local extension_path = vim.env.HOME .. '/.vscode/extensions/vadimcn.vscode-lldb-1.9.2/'
+local codelldb_path = extension_path .. 'adapter/codelldb'
+local liblldb_path = extension_path .. 'lldb/lib/liblldb'
+
+liblldb_path = liblldb_path .. ".dylib"
+
+local opts = {
+  tools = {
+    hover_actions = {
+      auto_focus = true,
+    },
+  },
+  server = {
+    on_attach = rust_on_attach,
+  },
+  dap = {
+    adapter = require('rust-tools.dap').get_codelldb_adapter(
+      codelldb_path, liblldb_path)
+  }
+}
+
+rt.setup(
+  opts
+)

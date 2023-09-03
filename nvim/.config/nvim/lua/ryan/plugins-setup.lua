@@ -92,5 +92,7 @@ require("lazy").setup({
 	'github/copilot.vim',
 	require 'ryan.plugins.autoformat',
 	'stevearc/dressing.nvim',
+	'simrat39/rust-tools.nvim',
+	'mfussenegger/nvim-dap',
 
 })
