@@ -1,20 +1,19 @@
-vim.g.mapleader = ","
+vim.g.mapleader = ','
 
 local keymap = vim.keymap
 
-keymap.set("i", "jk", "<esc>")
+keymap.set('i', 'jk', '<esc>')
 
-keymap.set("n", "<leader>l", ":nohl<CR>")
+keymap.set('n', '<leader>l', ':nohl<CR>')
 
-keymap.set("n", "<leader>to", ":tabnew<CR>")
-keymap.set("n", "<leader>tx", ":tabclose<CR>")
-keymap.set("n", "<leader>tn", ":tabn<CR>")
-keymap.set("n", "<leader>tp", ":tabp<CR>")
+keymap.set('n', '<leader>to', ':tabnew<CR>')
+keymap.set('n', '<leader>tx', ':tabclose<CR>')
+keymap.set('n', '<leader>tn', ':tabn<CR>')
+keymap.set('n', '<leader>tp', ':tabp<CR>')
 
-keymap.set("n", "<leader>v", ":vsplit<CR>")
+keymap.set('n', '<leader>v', ':vsplit<CR>')
 
-vim.api.nvim_set_keymap("n", "<leader>e", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
-
+vim.api.nvim_set_keymap('n', '<leader>e', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
 
 vim.keymap.set('n', '<C-p>', require('telescope.builtin').git_files, { desc = 'Search [G]it [F]iles' })
 vim.keymap.set('n', '<leader>gf', require('telescope.builtin').git_files, { desc = 'Search [G]it [F]iles' })

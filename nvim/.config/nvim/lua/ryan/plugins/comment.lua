@@ -1,11 +1,10 @@
 return {
-  "numToStr/Comment.nvim",
+  'numToStr/Comment.nvim',
   lazy = false,
   config = function()
     -- import comment plugin safely
-    local comment = require("Comment")
+    local comment = require 'Comment'
 
-    comment.setup({
-    })
+    comment.setup {}
   end,
 }

@@ -8,11 +8,10 @@ opt.swapfile = false
 opt.splitright = true
 opt.splitbelow = true
 
-
 -- not break word on -
-vim.opt.iskeyword:append("-")
+vim.opt.iskeyword:append '-'
 
-vim.o.mouse = "a"
+vim.o.mouse = 'a'
 
 -- Enable break indent
 vim.o.breakindent = true
