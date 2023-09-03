@@ -90,6 +90,7 @@ require("lazy").setup({
 		},
 	},
 	'github/copilot.vim',
-	require 'ryan.plugins.autoformat'
+	require 'ryan.plugins.autoformat',
+	'stevearc/dressing.nvim',
 
 })

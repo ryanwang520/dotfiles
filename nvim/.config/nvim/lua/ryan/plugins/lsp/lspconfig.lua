@@ -55,9 +55,7 @@ local servers = {
   clangd = {},
   gopls = {},
   pyright = {},
-  rust_analyzer = {
-    ['rust-analyzer'] = {},
-  },
+  rust_analyzer = {},
   tsserver = {
   },
   lua_ls = {
