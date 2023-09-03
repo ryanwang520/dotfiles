@@ -1,7 +1,14 @@
-require("lualine").setup({
+return {
 
-        theme = "nightfly",
-        icons_enabled = true,
-        component_separators = '|',
-        section_separators = '',
-})
+        "nvim-lualine/lualine.nvim",
+        config = function()
+                require("lualine").setup({
+
+                        theme = "nightfly",
+                        icons_enabled = true,
+                        component_separators = '|',
+                        section_separators = '',
+                })
+        end
+
+}
