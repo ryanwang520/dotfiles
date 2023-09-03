@@ -1,6 +1,6 @@
 -- [[ Configure LSP ]]
 --  This function gets run when an LSP connects to a particular buffer.
-local on_attach = function(_, bufnr)
+local common_on_attach = function(_, bufnr)
   -- NOTE: Remember that lua is a real programming language, and as such it is possible
   -- to define small helper and utility functions so you don't have to repeat yourself
   -- many times.
@@ -51,10 +51,20 @@ end
 --
 --  If you want to override the default filetypes that your language server will attach to you can
 --  define the property 'filetypes' to the map in question.
+
+
+
 local servers = {
   clangd = {},
   gopls = {},
   pyright = {},
+  ruff_lsp = {
+    on_attach = function(client, bufnr)
+      common_on_attach(client, bufnr)
+      client.server_capabilities.hoverProvider = false
+    end
+    ,
+  },
   tsserver = {
   },
   lua_ls = {
@@ -82,11 +92,18 @@ mason_lspconfig.setup {
 
 mason_lspconfig.setup_handlers {
   function(server_name)
+    local server = servers[server_name] or {}
+    local on_attach = server.on_attach or common_on_attach
+    local filetypes = server.filetypes
+
+    server.on_attach = nil
+    server.filetypes = nil
+
     require('lspconfig')[server_name].setup {
       capabilities = capabilities,
       on_attach = on_attach,
-      settings = servers[server_name],
-      filetypes = (servers[server_name] or {}).filetypes,
+      settings = server,
+      filetypes = filetypes,
     }
   end
 }
@@ -95,7 +112,7 @@ local rt = require("rust-tools")
 -- Rust-specific on_attach function
 local function rust_on_attach(client, bufnr)
   -- Call the common on_attach function first
-  on_attach(client, bufnr)
+  common_on_attach(client, bufnr)
 
   -- Then add Rust-specific settings
   vim.keymap.set("n", "<C-space>", rt.hover_actions.hover_actions, { buffer = bufnr })
