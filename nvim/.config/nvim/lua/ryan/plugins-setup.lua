@@ -31,7 +31,7 @@ require('lazy').setup {
   require 'ryan.plugins.lspconfig',
   require 'ryan.plugins.nvim-cmp',
   -- Useful plugin to show you pending keybinds.
-  { 'folke/which-key.nvim', opts = {} },
+  { 'folke/which-key.nvim',                     opts = {} },
   require 'ryan.plugins.gitsigns',
   'github/copilot.vim',
   'stevearc/dressing.nvim',

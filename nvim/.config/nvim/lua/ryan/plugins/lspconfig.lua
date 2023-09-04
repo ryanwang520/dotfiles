@@ -9,7 +9,7 @@ return {
 
     -- Useful status updates for LSP
     -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-    { 'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
+    { 'j-hui/fidget.nvim',       tag = 'legacy', opts = {} },
 
     -- Additional lua configuration, makes nvim stuff amazing!
     'folke/neodev.nvim',
@@ -76,6 +76,7 @@ return {
       clangd = {},
       gopls = {},
       pyright = {},
+      astro = {},
       ruff_lsp = {
         on_attach = function(client, bufnr)
           common_on_attach(client, bufnr)
