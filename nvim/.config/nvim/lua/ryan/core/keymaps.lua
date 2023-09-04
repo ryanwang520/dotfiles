@@ -47,3 +47,6 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 
 vim.api.nvim_set_keymap('n', '[b', ':bnext<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', ']b', ':bprev<CR>', { noremap = true, silent = true })
+
+
+vim.api.nvim_set_keymap('n', '<leader>b', ':Git blame<CR>', { noremap = true, silent = true })
