@@ -39,7 +39,7 @@ export PATH="$HOME/.pyenv/shims:$PATH"
 
 alias qj="export https_proxy=http://127.0.0.1:6152;export http_proxy=http://127.0.0.1:6152"
 
-alias uq="set -e http_proxy; set -e https_proy"
+alias uq="set -g http_proxy; set -g https_proy"
 
 qj
 
