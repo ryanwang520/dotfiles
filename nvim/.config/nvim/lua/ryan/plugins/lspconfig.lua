@@ -18,6 +18,20 @@ return {
     end,
   },
   config = function()
+    require "lspconfig".efm.setup {
+      init_options = { documentFormatting = true },
+      settings = {
+        rootMarkers = { ".git/" },
+        languages = {
+          lua = {
+            { formatCommand = "lua-format -i", formatStdin = true }
+          },
+          python = {
+            { formatCommand = "black --quiet -", formatStdin = true }
+          }
+        }
+      }
+    }
     -- [[ Configure LSP ]]
     --  This function gets run when an LSP connects to a particular buffer.
     local common_on_attach = function(_, bufnr)
