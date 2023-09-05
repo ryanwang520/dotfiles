@@ -16,6 +16,7 @@ require('lazy').setup {
   require 'ryan.plugins.vim-nightfly-colors',
   { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
   require 'ryan.plugins.telescope',
+  'windwp/nvim-ts-autotag',
   require 'ryan.plugins.nvim-treesitter',
   'nvim-lua/plenary.nvim',
   require 'ryan.plugins.lualine',
