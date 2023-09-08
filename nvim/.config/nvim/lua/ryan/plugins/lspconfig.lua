@@ -88,6 +88,7 @@ return {
 
     local servers = {
       clangd = {},
+      terraformls = {},
       gopls = {},
       pyright = {},
       astro = {},

@@ -14,6 +14,8 @@ require('lazy').setup {
   require 'ryan.plugins.nvim-tree',
   'nvim-tree/nvim-web-devicons',
   require 'ryan.plugins.vim-nightfly-colors',
+  -- { "catppuccin/nvim",                          name = "catppuccin", priority = 1000 },
+
   { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
   require 'ryan.plugins.telescope',
   'windwp/nvim-ts-autotag',

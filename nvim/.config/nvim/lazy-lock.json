@@ -1,6 +1,7 @@
 {
   "Comment.nvim": { "branch": "master", "commit": "0236521ea582747b58869cb72f70ccfa967d2e89" },
   "LuaSnip": { "branch": "master", "commit": "ea7d7ea510c641c4f15042becd27f35b3e5b3c2b" },
+  "catppuccin": { "branch": "main", "commit": "09b29cf2a60c64d6f9b5154ea7e4632772418539" },
   "cmp-nvim-lsp": { "branch": "main", "commit": "44b16d11215dce86f253ce0c30949813c0a90765" },
   "cmp_luasnip": { "branch": "master", "commit": "18095520391186d634a0045dacaa346291096566" },
   "copilot.vim": { "branch": "release", "commit": "719dd8d0beab993dbad47a9e86ecb0dbd4a99da5" },
@@ -14,7 +15,6 @@
   "mason-lspconfig.nvim": { "branch": "main", "commit": "dfdd771b792fbb4bad8e057d72558255695aa1a7" },
   "mason.nvim": { "branch": "main", "commit": "0942198fb9a998b6ccee36fb8dd7495eb8ba659c" },
   "neodev.nvim": { "branch": "main", "commit": "183f5a7357397260b631d6cccceccc3621b50f78" },
-  "nightfly": { "branch": "master", "commit": "2737ba5b8d22ad6803bb0f51099f90c61bab566c" },
   "nvim-cmp": { "branch": "main", "commit": "5dce1b778b85c717f6614e3f4da45e9f19f54435" },
   "nvim-dap": { "branch": "master", "commit": "31e1ece773e10448dcb616d5144290946a6264b7" },
   "nvim-lspconfig": { "branch": "master", "commit": "a27356f1ef9c11e1f459cc96a3fcac5c265e72d6" },
