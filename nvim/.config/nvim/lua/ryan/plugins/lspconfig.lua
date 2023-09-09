@@ -92,6 +92,7 @@ return {
       gopls = {},
       pyright = {},
       astro = {},
+      cssls = {},
       ruff_lsp = {
         on_attach = function(client, bufnr)
           common_on_attach(client, bufnr)

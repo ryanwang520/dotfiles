@@ -159,3 +159,7 @@ starship init fish | source
 
 #export FLUTTER_ROOT=/Users/ryanwang/flutter
 #export NDK_ROOT=$HOME/Library/Android/sdk/ndk/25.1.8937393
+
+# bun
+set --export BUN_INSTALL "$HOME/.bun"
+set --export PATH $BUN_INSTALL/bin $PATH
