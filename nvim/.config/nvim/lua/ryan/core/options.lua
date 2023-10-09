@@ -11,7 +11,8 @@ opt.splitbelow = true
 -- not break word on -
 vim.opt.iskeyword:append '-'
 
-vim.o.mouse = 'a'
+vim.o.mouse = ''
+
 
 -- Enable break indent
 vim.o.breakindent = true
