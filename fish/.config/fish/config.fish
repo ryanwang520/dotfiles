@@ -139,7 +139,6 @@ set -gx PATH "$VOLTA_HOME/bin" $PATH
 
 pyenv init - | source
 
-fzf_key_bindings
 
 if test (uname) = Darwin
     function __fish_describe_command; end
