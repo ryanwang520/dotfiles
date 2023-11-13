@@ -43,3 +43,11 @@ vim.o.termguicolors = true
 
 -- curor blink
 vim.o.guicursor = 'n-v-c-sm-i-ci-ve:block,r-cr-o:hor20,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor'
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "python",
+  callback = function()
+    vim.wo.foldmethod = "indent"
+    vim.wo.foldlevel = 99
+  end,
+})

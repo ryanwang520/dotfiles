@@ -1,0 +1,5 @@
+:inoremap jk <esc>
+:let mapleader = ","
+set hlsearch
+set incsearch
+nnoremap <leader>l :nohl<cr>
