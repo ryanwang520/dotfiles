@@ -1,6 +1,6 @@
 #/bin/sh
 
-folders=(fish tmux bin zsh bash nvim idea)
+folders=(fish tmux bin zsh bash nvim idea git)
 
 for folder in "${folders[@]}"
 do
