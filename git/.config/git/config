@@ -15,7 +15,6 @@
 	remote = green
 
 [color "diff"]
-
 	frag = magenta bold
 	meta = yellow bold
 	new = green bold 
@@ -27,5 +26,26 @@
 	added = yellow 
 	changed = green 
 	untracked = cyan
-[help]
-	autoCorrect = immediate
+
+[alias] 
+	s = status
+	git = !git
+	st = stash list
+
+[core] 
+	pager = delta
+
+[delta]
+	hyperlinks = true 
+	line-numbers = true
+	navigate = true
+	syntax-theme = Monokai Extended
+
+[diff] 
+	colorMoved = default
+[interactive]
+	diffFilter = delta --color-only
+[merge]
+	conflictStyle = zdiff3
+[init]
+	defaultBranch = main
