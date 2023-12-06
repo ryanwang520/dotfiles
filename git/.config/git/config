@@ -31,6 +31,7 @@
 	s = status
 	git = !git
 	st = stash list
+	switch-recent = !git branch --sort=-committerdate --format='%(refname:short)' | fzf --preview='git log --date=relative --color `git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@'`..{}' | xargs git switch 
 
 [core] 
 	pager = delta
@@ -49,3 +50,5 @@
 	conflictStyle = zdiff3
 [init]
 	defaultBranch = main
+[branch]
+	sort = -committerdate

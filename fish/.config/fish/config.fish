@@ -167,3 +167,8 @@ set --export PATH $BUN_INSTALL/bin $PATH
 export LESS='--chop-long-lines --HILITE-UNREAD --ignore-case --incsearch --jump-target=4 --LONG-PROMPT --no-init --quit-if-one-screen --RAW-CONTROL-CHARS --use-color --window=-4'
 
 alias pip="python -m pip"
+
+alias ghs="gh copilot suggest"
+alias ghe="gh copilot explain"
+alias gswr='git switch-recent'
+alias gs="git status"
