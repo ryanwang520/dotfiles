@@ -26,6 +26,9 @@ return {
           lua = {
             { formatCommand = "lua-format -i", formatStdin = true }
           },
+          markdown = {
+            { formatCommand = "prettier" }
+          },
         }
       }
     }
@@ -86,6 +89,7 @@ return {
     local servers = {
       clangd = {},
       terraformls = {},
+      marksman = {},
       gopls = {},
       pyright = {},
       astro = {},
