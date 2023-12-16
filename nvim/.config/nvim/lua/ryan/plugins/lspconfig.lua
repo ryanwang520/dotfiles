@@ -26,9 +26,6 @@ return {
           lua = {
             { formatCommand = "lua-format -i", formatStdin = true }
           },
-          markdown = {
-            { formatCommand = "prettier" }
-          },
         }
       }
     }
