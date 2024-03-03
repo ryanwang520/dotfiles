@@ -11,6 +11,9 @@ return {
         rust = { 'rustfmt' },
         go = { 'gofmt' },
         astro = { 'prettier' },
+        html = { 'prettier' },
+        css = { 'prettier' },
+        less = { 'prettier' },
         terraform = { 'terraform_fmt' },
         -- Conform will run multiple formatters sequentially
         python = { 'ruff_fix', 'ruff_format' },
