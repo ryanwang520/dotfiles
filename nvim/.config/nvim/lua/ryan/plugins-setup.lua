@@ -37,4 +37,5 @@ require('lazy').setup {
   require 'ryan.plugins.lspconfig',
   require 'ryan.plugins.nvim-cmp',
   require 'ryan.plugins.gitsigns',
+  require 'ryan.plugins.conform',
 }
