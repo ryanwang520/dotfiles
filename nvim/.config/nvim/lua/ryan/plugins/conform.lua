@@ -7,6 +7,7 @@ return {
       formatters_by_ft = {
         lua = { 'stylua' },
         markdown = { 'prettier' },
+        json = { 'prettier' },
         rust = { 'rustfmt' },
         go = { 'gofmt' },
         astro = { 'prettier' },
