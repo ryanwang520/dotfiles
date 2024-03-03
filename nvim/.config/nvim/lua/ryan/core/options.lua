@@ -13,7 +13,6 @@ vim.opt.iskeyword:append '-'
 
 vim.o.mouse = ''
 
-
 -- Enable break indent
 vim.o.breakindent = true
 
@@ -31,6 +30,7 @@ vim.wo.signcolumn = 'yes'
 vim.o.updatetime = 250
 
 opt.tabstop = 4
+
 
 --- This controls the time (in milliseconds) that NeoVim waits for a mapped key sequence to complete.
 vim.o.timeoutlen = 300
