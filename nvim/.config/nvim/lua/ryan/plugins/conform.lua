@@ -17,6 +17,9 @@ return {
 
         -- Use a sub-list to run only the first available formatter
         javascript = { { 'prettierd', 'prettier' } },
+        typescript = { { 'prettierd', 'prettier' } },
+        javascriptreact = { { 'prettierd', 'prettier' } },
+        typescriptreact = { { 'prettierd', 'prettier' } },
       },
     }
     vim.api.nvim_create_autocmd('BufWritePre', {
