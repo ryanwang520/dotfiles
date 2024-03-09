@@ -26,7 +26,14 @@ require('lazy').setup {
   'stevearc/dressing.nvim',
   'simrat39/rust-tools.nvim',
   'mfussenegger/nvim-dap',
-  require 'ryan.plugins.vim-nightfly-colors',
+  {
+    'folke/tokyonight.nvim',
+    lazy = false,
+    priority = 1000,
+    opts = {
+      -- transparent = true,
+    },
+  },
   require 'ryan.plugins.nvim-tree',
   require 'ryan.plugins.telescope',
   require 'ryan.plugins.nvim-treesitter',

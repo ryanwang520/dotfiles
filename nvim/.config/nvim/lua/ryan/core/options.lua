@@ -31,7 +31,6 @@ vim.o.updatetime = 250
 
 opt.tabstop = 4
 
-
 --- This controls the time (in milliseconds) that NeoVim waits for a mapped key sequence to complete.
 vim.o.timeoutlen = 300
 
@@ -44,10 +43,13 @@ vim.o.termguicolors = true
 -- curor blink
 vim.o.guicursor = 'n-v-c-sm-i-ci-ve:block,r-cr-o:hor20,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor'
 
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = "python",
+vim.api.nvim_create_autocmd('FileType', {
+  -- pattern = 'python',
   callback = function()
-    vim.wo.foldmethod = "indent"
-    vim.wo.foldlevel = 99
+    -- vim.wo.foldmethod = 'indent'
+    -- vim.wo.foldlevel = 99
+    vim.wo.foldmethod = 'expr'
+    vim.wo.foldexpr = 'nvim_treesitter#foldexpr()'
+    vim.o.foldenable = false
   end,
 })
