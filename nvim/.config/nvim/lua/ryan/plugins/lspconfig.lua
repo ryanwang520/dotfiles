@@ -9,7 +9,7 @@ return {
 
     -- Useful status updates for LSP
     -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-    { 'j-hui/fidget.nvim',       tag = 'legacy', opts = {} },
+    { 'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
 
     -- Additional lua configuration, makes nvim stuff amazing!
     'folke/neodev.nvim',
@@ -80,6 +80,7 @@ return {
         end,
       },
       tsserver = {},
+      eslint = {},
       lua_ls = {
         Lua = {
           diagnostics = { globals = { 'vim' } },
@@ -99,7 +100,6 @@ return {
     mason_lspconfig.setup {
       ensure_installed = vim.tbl_keys(servers),
     }
-
 
     mason_lspconfig.setup_handlers {
       function(server_name)
