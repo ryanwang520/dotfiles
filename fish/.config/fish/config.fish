@@ -34,7 +34,6 @@ function java_use
 end
 
 
-export PATH="$HOME/.pyenv/shims:$PATH"
 
 
 alias qj="export https_proxy=http://127.0.0.1:6152;export http_proxy=http://127.0.0.1:6152"
@@ -137,7 +136,6 @@ alias vi="nvim"
 set -gx VOLTA_HOME "$HOME/.volta"
 set -gx PATH "$VOLTA_HOME/bin" $PATH
 
-pyenv init - | source
 
 
 if test (uname) = Darwin
@@ -172,3 +170,5 @@ alias ghs="gh copilot suggest"
 alias ghe="gh copilot explain"
 alias gswr='git switch-recent'
 alias gs="git status"
+
+pyenv init - | source
