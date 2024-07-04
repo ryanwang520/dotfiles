@@ -1,6 +1,8 @@
 alias rm=trash
 alias cat='bat --paging=never'
 
+export LANG="en_US.UTF-8"
+
 export EDITOR=vim
 export GOPATH=$HOME/go
 export GOBIN=$GOPATH/bin
@@ -105,7 +107,8 @@ export PATH="$HOME/.cargo/bin:$PATH"
 
 
 
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/zulu-11.jdk/Contents/Home
+#export JAVA_HOME=/Library/Java/JavaVirtualMachines/zulu-11.jdk/Contents/Home
+export JAVA_HOME=/opt/homebrew/Cellar/openjdk@17/17.0.11/libexec/openjdk.jdk/Contents/Home
 
 
 alias ggpush="git push origin HEAD"
@@ -148,8 +151,6 @@ end
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/ryanwang/Downloads/google-cloud-sdk/path.fish.inc' ]; . '/Users/ryanwang/Downloads/google-cloud-sdk/path.fish.inc'; end
 
-source /Users/ryanwang/.docker/init-fish.sh || true # Added by Docker Desktop
-
 
 starship init fish | source
 
@@ -171,4 +172,4 @@ alias ghe="gh copilot explain"
 alias gswr='git switch-recent'
 alias gs="git status"
 
-pyenv init - | source
+# pyenv init - | source
