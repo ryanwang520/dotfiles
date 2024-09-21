@@ -34,7 +34,7 @@ function java_use
     export JAVA_HOME=(/usr/libexec/java_home -v $argv[1])
     java -version
 end
-
+export  JAVA_HOME=(/usr/libexec/java_home -v 17)
 
 
 
@@ -75,11 +75,17 @@ function rb
         rebase_upstream master
 end
 
+# function git_replace
+#     set a $argv[1]
+#     set b $argv[2]
+#     git grep -E -l $a | xargs sed -i "s/$a/$b/g";
+# end
 function git_replace
     set a $argv[1]
     set b $argv[2]
-    git grep -E -l $a | xargs sed -i "s/$a/$b/g";
+    git grep -E -l "$a" | xargs perl -i -pe "s#$a#$b#g"
 end
+
 
 alias gstash="git stash --include-untracked"
 alias gapply="git stash apply"
@@ -107,8 +113,6 @@ export PATH="$HOME/.cargo/bin:$PATH"
 
 
 
-#export JAVA_HOME=/Library/Java/JavaVirtualMachines/zulu-11.jdk/Contents/Home
-export JAVA_HOME=/opt/homebrew/Cellar/openjdk@17/17.0.11/libexec/openjdk.jdk/Contents/Home
 
 
 alias ggpush="git push origin HEAD"

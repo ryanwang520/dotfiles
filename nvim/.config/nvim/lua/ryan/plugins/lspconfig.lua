@@ -79,7 +79,7 @@ return {
           client.server_capabilities.hoverProvider = false
         end,
       },
-      tsserver = {},
+      ts_ls = {},
       eslint = {},
       lua_ls = {
         Lua = {
