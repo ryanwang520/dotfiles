@@ -1,6 +1,6 @@
 # This is Git's per-user configuration file.
 [user]
-	name = Ryan Wang
+	name = Haowei Wang
 	email = hwwangwang@gmail.com
 [rerere]
 	enabled = true

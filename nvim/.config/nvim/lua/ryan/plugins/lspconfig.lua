@@ -73,7 +73,7 @@ return {
       pyright = {},
       astro = {},
       cssls = {},
-      ruff_lsp = {
+      ruff = {
         on_attach = function(client, bufnr)
           common_on_attach(client, bufnr)
           client.server_capabilities.hoverProvider = false
