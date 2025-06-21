@@ -99,25 +99,26 @@ return {
 
     mason_lspconfig.setup {
       ensure_installed = vim.tbl_keys(servers),
+      automatic_enable = false,
     }
 
-    -- mason_lspconfig.setup_handlers {
-    --   function(server_name)
-    --     local server = servers[server_name] or {}
-    --     local on_attach = server.on_attach or common_on_attach
-    --     local filetypes = server.filetypes
-    --
-    --     server.on_attach = nil
-    --     server.filetypes = nil
-    --
-    --     require('lspconfig')[server_name].setup {
-    --       capabilities = capabilities,
-    --       on_attach = on_attach,
-    --       settings = server,
-    --       filetypes = filetypes,
-    --     }
-    --   end,
-    -- }
+    -- Setup each LSP server individually
+    for server_name, server_config in pairs(servers) do
+      local server = vim.tbl_deep_extend('force', {}, server_config)
+      local on_attach = server.on_attach or common_on_attach
+      local filetypes = server.filetypes
+
+      -- Remove on_attach and filetypes from server config to avoid duplication
+      server.on_attach = nil
+      server.filetypes = nil
+
+      require('lspconfig')[server_name].setup {
+        capabilities = capabilities,
+        on_attach = on_attach,
+        settings = server,
+        filetypes = filetypes,
+      }
+    end
 
     local rt = require 'rust-tools'
 
