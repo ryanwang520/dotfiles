@@ -101,23 +101,24 @@ return {
       ensure_installed = vim.tbl_keys(servers),
     }
 
-    mason_lspconfig.setup_handlers {
-      function(server_name)
-        local server = servers[server_name] or {}
-        local on_attach = server.on_attach or common_on_attach
-        local filetypes = server.filetypes
+    -- mason_lspconfig.setup_handlers {
+    --   function(server_name)
+    --     local server = servers[server_name] or {}
+    --     local on_attach = server.on_attach or common_on_attach
+    --     local filetypes = server.filetypes
+    --
+    --     server.on_attach = nil
+    --     server.filetypes = nil
+    --
+    --     require('lspconfig')[server_name].setup {
+    --       capabilities = capabilities,
+    --       on_attach = on_attach,
+    --       settings = server,
+    --       filetypes = filetypes,
+    --     }
+    --   end,
+    -- }
 
-        server.on_attach = nil
-        server.filetypes = nil
-
-        require('lspconfig')[server_name].setup {
-          capabilities = capabilities,
-          on_attach = on_attach,
-          settings = server,
-          filetypes = filetypes,
-        }
-      end,
-    }
     local rt = require 'rust-tools'
 
     -- Rust-specific on_attach function

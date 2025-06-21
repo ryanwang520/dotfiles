@@ -16,6 +16,7 @@ export PATH="$PATH:/Users/ryanwang/flyway-7.11.0"
 export PATH="$PATH:$HOME/.spawnctl/bin"
 export GO111MODULE="on"
 export PATH="$PATH":"$HOME/.pub-cache/bin"
+export PATH="/Users/ryanwang/.codeium/windsurf/bin:$PATH"
 
 
 
@@ -40,7 +41,7 @@ export  JAVA_HOME=(/usr/libexec/java_home -v 17)
 
 alias qj="export https_proxy=http://127.0.0.1:6152;export http_proxy=http://127.0.0.1:6152"
 
-alias uq="set -g http_proxy; set -g https_proy"
+alias uq="set -g http_proxy; set -g https_proxy"
 
 qj
 
@@ -171,9 +172,9 @@ export LESS='--chop-long-lines --HILITE-UNREAD --ignore-case --incsearch --jump-
 
 alias pip="python -m pip"
 
-alias ghs="gh copilot suggest"
-alias ghe="gh copilot explain"
 alias gswr='git switch-recent'
-alias gs="git status"
 
 # pyenv init - | source
+alias claude="/Users/ryanwang/.claude/local/claude"
+
+fish_add_path -a /Users/ryanwang/.foundry/bin

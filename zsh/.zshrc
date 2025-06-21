@@ -16,5 +16,4 @@ eval "$(starship init zsh)"
 # Added by Windsurf
 export PATH="/Users/ryanwang/.codeium/windsurf/bin:$PATH"
 
-# Added by Windsurf
-export PATH="/Users/ryanwang/.codeium/windsurf/bin:$PATH"
+alias claude="/Users/ryanwang/.claude/local/claude"
